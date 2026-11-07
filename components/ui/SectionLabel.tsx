@@ -14,7 +14,7 @@ const Dot = ({ className = "" }: { className?: string }) => (
 );
 
 /** Small uppercase label shown above every section heading. */
-export default function SectionLabel({ text, variant = "lines", className = "" }: Props) {
+export function SectionLabel({ text, variant = "lines", className = "" }: Props) {
   const label = (
     <span className="font-body text-[0.875rem] font-medium uppercase leading-none tracking-[0.01em] text-primary xl:text-[0.9375rem]">
       {text}

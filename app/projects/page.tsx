@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/ui/PageBanner";
-import ProjectsSection from "@/components/home/ProjectsSection";
-import { site } from "@/lib/site";
+import rawData from "@/data/templates.json";
+import type { CyberSecurityTemplateData } from "@/types/templates.types";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
 
-export const metadata: Metadata = { title: site.pages.projects.title };
+const templateData: CyberSecurityTemplateData = rawData;
+const sectionData = templateData.categories.CyberSecurity.sections;
+const commonData = templateData.common;
+
+export const metadata: Metadata = commonData.projectsBreadcrumb.seo;
 
 export default function ProjectsPage() {
   return (
-    <>
-      <PageBanner title={site.pages.projects.title} />
-      <div className="xl:[&>section]:pb-[3.1rem] xl:[&>section]:pt-[2.9rem]">
-        <ProjectsSection />
-      </div>
-    </>
+    <main className="flex-1">
+      <Breadcrumb data={commonData.projectsBreadcrumb} ui={commonData.globalUI} />
+      <ProjectsSection data={sectionData.Projects?.variants?.CyberSecurityProjects1} paginated ui={commonData.globalUI} />
+    </main>
   );
 }

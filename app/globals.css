@@ -1,110 +1,157 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+:root {
+  /* Fonts (layout.tsx overrides these from templates.json common.theme.fonts) */
+  --font-heading: Arial, sans-serif;
+  --font-body: Arial, sans-serif;
+  --font-banner: Arial, sans-serif;
+  --font-footer: Arial, sans-serif;
+
+  /* CyberAnexa theme */
+  /* Brand */
   --color-primary: #0560fe;
   --color-primary-dark: #004ad8;
+  --color-white: #ffffff;
+
+  /* Text */
   --color-navy: #061440;
   --color-ink: #0b1a4a;
   --color-body: #5d6476;
   --color-muted: #6b7385;
+  --color-footer: #3e4757;
+
+  /* Backgrounds and borders */
   --color-light: #f3f8ff;
   --color-soft: #e8f1fd;
   --color-line: #e3ebf6;
-  --color-footer: #3e4757;
   --color-copyright: #123259;
 
-  --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-banner: var(--font-mulish), ui-sans-serif, system-ui, sans-serif;
-  --font-footer: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-}
+  /* Forms */
+  --color-required: #ef4444;
+  --color-success: #0f7a5f;
+  --color-success-bg: #ecf8f4;
+  --color-placeholder: #9aa2b1;
+  --color-field-border: #dfe5ee;
 
-/*
- * The design was   produced at 1440px and exported at 1920px.
- * From 1280px up the root font-size scales with the viewport so every rem-based
- * size (text, spacing, radius) matches the design exactly:
- *   1440px -> 16px   |   1920px -> 21.33px (the screenshots)
- */
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-}
-@media (min-width: 1280px) {
-  html {
-    font-size: calc(100vw / 90);
-  }
-}
-@media (min-width: 1920px) {
-  html {
-    font-size: 21.333px;
-  }
+  /* Accents */
+  --color-blue-accent: #2f7ff5;
+  --color-blue-strong: #1f6ff8;
+  --color-challenge: #2b7bf5;
+  --color-solution: #19b394;
+  --color-solution-bg: #17a884;
+  --color-star: #f7b500;
+  --color-quote-icon: #3d86f8;
+  --color-about-number: #4388fc;
+  --color-service-number: #6da5fa;
+  --color-why-number: #7ca8fa;
+  --color-why-border: #5b9bf5;
+  --color-dots: #80aaf5;
+  --color-badge-start: #1667ff;
+  --color-badge-end: #0a4fe0;
+
+  /* Text */
+  --color-text-strong: #4f566a;
+  --color-text-project: #4c5a85;
+  --color-text-article: #5e6578;
+  --color-text-blog: #646b85;
+  --color-text-team-role: #66758e;
+  --color-text-faint: #c3cad6;
+
+  /* Dark panels */
+  --color-contact-panel: #0b1d40;
+  --color-contact-panel-strip: #16305a;
+  --color-contact-panel-55: rgba(11, 29, 64, 0.55);
+  --color-contact-panel-0: rgba(11, 29, 64, 0);
+  --color-banner-tint: rgba(11, 75, 209, 0.1);
+  --color-black: #000000;
+
+  /* Tinted backgrounds */
+  --color-section-tint: #f8fbff;
+  --color-blue-tint: #e7f0fd;
+  --color-blue-wash: #eef4fd;
+  --color-why-icon-bg: #e3ecfd;
+  --color-footer-icon-bg: #e1ecfa;
+  --color-article-tag-bg: #e5effc;
+  --color-blog-tag-bg: #e5effd;
+  --color-info-icon-bg: #e9f1fd;
+  --color-included-bg: #f3f8fe;
+  --color-about-bg: #fbfcff;
+  --color-overview-bg: #fcfdff;
+
+  /* Section gradients */
+  --color-page-top: #fafcff;
+  --color-page-top-alt: #f9fbff;
+  --color-page-top-soft: #fbfdff;
+  --color-page-bottom: #f6f9fe;
+  --color-page-bottom-alt: #f6f9ff;
+  --color-page-bottom-mid: #f5f9fe;
+  --color-page-bottom-deep: #f4f8fe;
+  --color-page-bottom-cool: #f4f8ff;
+  --color-footer-bottom: #eef5fd;
+  --color-services-top: #f3f9ff;
+  --color-services-bottom: #f5faff;
+  --color-intro-top: #f6faff;
+  --color-intro-bottom: #eef5fe;
+
+  /* Borders */
+  --color-header-border: #eef1f6;
+  --color-card-border: #e4ebf5;
+  --color-card-border-soft: #e8eef8;
+  --color-sidebar-border: #e9eff8;
+  --color-sidebar-divider: #e8eef6;
+  --color-pagination-border: #e3eaf4;
+  --color-footer-divider: #dfe8f4;
+  --color-slider-border: #d9e4f3;
+  --color-about-divider: #dfe8f5;
+  --color-quote-divider: #dfe6f0;
+  --color-service-border: #e6eefa;
+  --color-blog-card-border: #edf2f9;
+
+  /* Shadows */
+  --color-shadow-blue-30: rgba(23, 72, 160, 0.3);
+  --color-shadow-blue-25: rgba(23, 72, 160, 0.25);
+  --color-shadow-blue-20: rgba(23, 72, 160, 0.2);
+  --color-shadow-blue-18: rgba(23, 72, 160, 0.18);
+  --color-shadow-primary-60: rgba(5, 96, 254, 0.6);
+  --color-shadow-primary-55: rgba(5, 96, 254, 0.55);
+  --color-shadow-primary-12: rgba(5, 96, 254, 0.12);
+  --color-shadow-soft-55: rgba(214, 230, 252, 0.55);
+  --color-shadow-soft-40: rgba(214, 230, 252, 0.4);
+  --color-glass-60: rgba(236, 243, 253, 0.6);
+  --color-shadow-navy-25: rgba(9, 28, 66, 0.25);
+  --color-shadow-navy-0: rgba(9, 28, 66, 0);
+  --color-shadow-navy-18: rgba(6, 20, 64, 0.18);
 }
 
 body {
-  background: #ffffff;
-  color: var(--color-body);
   font-family: var(--font-body);
-  overflow-x: hidden;
+  color: var(--color-body);
+  background-color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Global transitions and theme styling for links and buttons */
+a, button {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
+
 @layer components {
-  .container-site {
-    width: 100%;
-    max-width: 90rem;
-    margin-inline: auto;
-    padding-inline: 1.25rem;
-  }
-  @media (min-width: 768px) {
-    .container-site {
-      padding-inline: 2rem;
-    }
-  }
-  @media (min-width: 1280px) {
-    .container-site {
-      padding-inline: 4.125rem;
-    }
+  .section-spacing {
+    padding-block: 32px;
   }
 
-  /* Shared form field look (contact + quote forms) */
-  .form-field {
-    width: 100%;
-    border: 1px solid #dfe5ee;
-    border-radius: 0.375rem;
-    background: #ffffff;
-    padding-inline: 0.85rem;
-    font-family: var(--font-body);
-    font-size: 0.9375rem;
-    color: var(--color-navy);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+  /* Theme primary button with white-on-hover effect */
+  .btn-theme-primary {
+    @apply inline-flex items-center justify-center border-2 border-primary bg-primary text-white font-medium transition-all duration-300 hover:bg-white hover:text-primary hover:border-primary hover:shadow-lg active:scale-[0.98];
   }
-  .form-field::placeholder {
-    color: #9aa2b1;
-  }
-  .form-field:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgb(5 96 254 / 0.12);
-  }
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
+  /* Theme outline button */
+  .btn-theme-outline {
+    @apply inline-flex items-center justify-center border-2 border-primary bg-white text-primary font-medium transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg active:scale-[0.98];
   }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* Soft page-wide background tint used by most sections */
-.bg-page {
-  background:
-    radial-gradient(60rem 30rem at 100% 0%, rgb(232 242 255 / 0.7), transparent 70%),
-    radial-gradient(50rem 30rem at 0% 100%, rgb(236 244 255 / 0.7), transparent 70%),
-    #f9fbff;
 }

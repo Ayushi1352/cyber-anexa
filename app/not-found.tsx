@@ -1,17 +1,20 @@
-import PageBanner from "@/components/ui/PageBanner";
-import ArrowButton from "@/components/ui/ArrowButton";
+import type { Metadata } from "next";
+import rawData from "@/data/templates.json";
+import type { CyberSecurityTemplateData } from "@/types/templates.types";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { NotFoundSection } from "@/components/sections/NotFoundSection";
+
+const templateData: CyberSecurityTemplateData = rawData;
+const sectionData = templateData.categories.CyberSecurity.sections;
+const commonData = templateData.common;
+
+export const metadata: Metadata = commonData.notFoundBreadcrumb.seo;
 
 export default function NotFound() {
   return (
-    <>
-      <PageBanner title="Page Not Found" crumbs={[{ label: "404" }]} />
-      <section className="bg-[#f8fbff] px-5 py-20 text-center">
-        <p className="font-heading text-[4rem] font-extrabold leading-none text-primary">404</p>
-        <p className="mx-auto mt-4 max-w-md font-body text-[1.0625rem] text-body">
-          The page you are looking for doesn’t exist or has been moved.
-        </p>
-        <ArrowButton href="/" label="Back to Home" className="mt-8 h-[3.2rem] px-8 text-base" />
-      </section>
-    </>
+    <main className="flex-1">
+      <Breadcrumb data={commonData.notFoundBreadcrumb} ui={commonData.globalUI} />
+      <NotFoundSection data={sectionData.NotFound?.variants?.CyberSecurityNotFound1} />
+    </main>
   );
 }
