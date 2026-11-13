@@ -2,12 +2,13 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
-import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import { ArrowButton } from "@/components/ui/ArrowButton";
 import { Heading, Lines } from "@/components/ui/Text";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { container } from "@/components/ui/classes";
-import type { TeamData, TeamMember } from "@/types/templates.types";
+import { fill } from "@/components/ui/Text";
+import type { GlobalUIData, TeamData, TeamMember } from "@/types/templates.types";
 
 function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
@@ -40,9 +41,11 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 /** "Meet Our Team" section with auto-slider — used on Home and About Us. */
 export function TeamSection({
   data: content,
+  ui,
   showButton = true,
 }: {
   data?: TeamData;
+  ui?: GlobalUIData;
   showButton?: boolean;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,19 +75,15 @@ export function TeamSection({
 
   const maxIndex = Math.max(0, members.length - visibleCount);
 
-  // Keep index within bounds if visibleCount changes
-  useEffect(() => {
-    if (currentIndex > maxIndex) {
-      setCurrentIndex(maxIndex);
-    }
-  }, [maxIndex, currentIndex]);
+  // Kept within bounds while rendering (no effect needed) when fewer cards fit after a resize
+  const index = Math.min(currentIndex, maxIndex);
 
   const goNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    setCurrentIndex((prev) => (Math.min(prev, maxIndex) >= maxIndex ? 0 : Math.min(prev, maxIndex) + 1));
   }, [maxIndex]);
 
   const goPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+    setCurrentIndex((prev) => (Math.min(prev, maxIndex) <= 0 ? maxIndex : Math.min(prev, maxIndex) - 1));
   }, [maxIndex]);
 
   // Autoplay timer (every 3.5s)
@@ -124,7 +123,7 @@ export function TeamSection({
   const totalSteps = maxIndex + 1;
 
   return (
-    <section className="section-spacing bg-[var(--color-section-tint)] px-0 xl:px-[3.3rem]">
+    <section className="py-[32px] bg-[var(--color-section-tint)] px-0 xl:px-[3.3rem]">
       <div className="mx-auto max-w-[83.4rem] bg-[linear-gradient(180deg,var(--color-page-top-soft)_0%,var(--color-page-bottom)_100%)]">
         <div className={`${container} !max-w-none xl:!px-[3.1rem]`}>
           <div data-reveal="up" className="text-center">
@@ -151,7 +150,7 @@ export function TeamSection({
               <div
                 className="flex transition-transform duration-500 ease-out"
                 style={{
-                  transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+                  transform: `translateX(-${index * (100 / visibleCount)}%)`,
                 }}
               >
                 {members.map((member) => (
@@ -172,9 +171,9 @@ export function TeamSection({
                   type="button"
                   onClick={goPrev}
                   className="flex size-[2.6rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary shadow-sm transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:scale-95"
-                  aria-label="Previous member"
+                  aria-label={ui?.previousMemberLabel}
                 >
-                  <LuChevronLeft className="size-[1.2rem]" strokeWidth={2.4} />
+                  <Icon name="LuChevronLeft" className="size-[1.2rem]" strokeWidth={2.4} />
                 </button>
 
                 {/* Indicator Dots */}
@@ -185,12 +184,12 @@ export function TeamSection({
                       type="button"
                       onClick={() => setCurrentIndex(idx)}
                       className={`h-[0.5rem] rounded-full transition-all duration-300 ${
-                        idx === currentIndex
+                        idx === index
                           ? "w-[1.8rem] bg-primary shadow-sm"
                           : "w-[0.5rem] bg-[var(--color-slider-border)] hover:bg-primary/50"
                       }`}
-                      aria-label={`Go to slide ${idx + 1}`}
-                      aria-current={idx === currentIndex ? "true" : undefined}
+                      aria-label={ui ? fill(ui.goToSlideLabel, { n: idx + 1 }) : undefined}
+                      aria-current={idx === index ? "true" : undefined}
                     />
                   ))}
                 </div>
@@ -199,9 +198,9 @@ export function TeamSection({
                   type="button"
                   onClick={goNext}
                   className="flex size-[2.6rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary shadow-sm transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:scale-95"
-                  aria-label="Next member"
+                  aria-label={ui?.nextMemberLabel}
                 >
-                  <LuChevronRight className="size-[1.2rem]" strokeWidth={2.4} />
+                  <Icon name="LuChevronRight" className="size-[1.2rem]" strokeWidth={2.4} />
                 </button>
               </div>
             )}

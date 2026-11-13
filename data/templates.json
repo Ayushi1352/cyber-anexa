@@ -22,8 +22,12 @@
       "servicesMenuLabel": "Toggle services menu",
       "previousLabel": "Previous",
       "nextLabel": "Next",
+      "previousMemberLabel": "Previous member",
+      "nextMemberLabel": "Next member",
+      "goToSlideLabel": "Go to slide {n}",
       "previousPageLabel": "Previous page",
       "nextPageLabel": "Next page",
+      "goToPageLabel": "Go to page {n}",
       "paginationLabel": "Blog pagination",
       "showTestimonialLabel": "Show testimonial from {name}",
       "ratingLabel": "Rated {rating} out of 5",
@@ -501,22 +505,22 @@
               "imageAlt": "Security operations team at work",
               "items": [
                 {
-                  "icon": "shield",
+                  "icon": "LuShield",
                   "title": "Proven Expertise",
                   "description": "Our certified security professionals\nbring deep industry experience to\ndeliver reliable and effective\nprotection for your business."
                 },
                 {
-                  "icon": "cloud",
+                  "icon": "LuCloud",
                   "title": "Customized Security Solutions",
                   "description": "We understand your unique business\nneeds and provide tailor-made\ncybersecurity strategies that ensure\nmaximum protection and resilience."
                 },
                 {
-                  "icon": "settings",
+                  "icon": "LuSettings",
                   "title": "Proactive Threat Protection",
                   "description": "We continuously monitor, detect\nand prevent cyber threats before\nthey impact your systems and\nbusiness operations."
                 },
                 {
-                  "icon": "headset",
+                  "icon": "LuHeadset",
                   "title": "24/7 Security Support",
                   "description": "Our dedicated team provides\nround-the-clock monitoring, quick\nincident response and continuous\nsupport for your peace of mind."
                 }
@@ -1083,32 +1087,32 @@
               "includedTitleHighlight": "Included",
               "included": [
                 {
-                  "icon": "brick-wall-fire",
+                  "icon": "LuBrickWall",
                   "title": "Firewall Configuration",
                   "text": "Setup and management of next-generation firewalls to block malicious traffic."
                 },
                 {
-                  "icon": "shield-check",
+                  "icon": "LuShieldCheck",
                   "title": "Intrusion Prevention",
                   "text": "Detect and prevent unauthorized access and suspicious network activity."
                 },
                 {
-                  "icon": "nodes",
+                  "icon": "LuGitFork",
                   "title": "Secure Network Design",
                   "text": "Design and implement secure and scalable network infrastructure."
                 },
                 {
-                  "icon": "monitor-chart",
+                  "icon": "MonitorChart",
                   "title": "Network Monitoring",
                   "text": "24/7 monitoring to identify and respond to threats in real-time."
                 },
                 {
-                  "icon": "server",
+                  "icon": "LuServer",
                   "title": "VPN & Remote Access",
                   "text": "Enable secure remote access for your team and business operations."
                 },
                 {
-                  "icon": "settings",
+                  "icon": "LuSettings",
                   "title": "Policy Management",
                   "text": "Define and enforce network security policies and access controls."
                 }
@@ -1132,22 +1136,22 @@
               "infoTitle": "Project Information",
               "info": [
                 {
-                  "icon": "layers",
+                  "icon": "LuLayers",
                   "label": "Category",
                   "value": "Cyber Security"
                 },
                 {
-                  "icon": "users",
+                  "icon": "LuUsers",
                   "label": "Clients",
                   "value": "ABC Digital Solutions"
                 },
                 {
-                  "icon": "calendar",
+                  "icon": "LuCalendarDays",
                   "label": "Date",
                   "value": "Jan 15, 2026"
                 },
                 {
-                  "icon": "clock",
+                  "icon": "LuClock",
                   "label": "Duration",
                   "value": "6 Months"
                 }
@@ -1276,17 +1280,17 @@
                 "image": "/images/contact/contact-card.webp",
                 "items": [
                   {
-                    "icon": "map-pin",
+                    "icon": "LuMapPin",
                     "title": "Our Office",
                     "text": "350 Fifth Avenue,\nNew York, NY 10118, USA"
                   },
                   {
-                    "icon": "phone",
+                    "icon": "LuPhone",
                     "title": "Call Us",
                     "text": "+1 0000000000"
                   },
                   {
-                    "icon": "mail",
+                    "icon": "LuMail",
                     "title": "Email Us",
                     "text": "info@xyz.com"
                   }
@@ -1295,21 +1299,25 @@
                 "socials": [
                   {
                     "id": "facebook",
+                    "icon": "FaFacebookF",
                     "label": "Facebook",
                     "url": "https://facebook.com"
                   },
                   {
                     "id": "instagram",
+                    "icon": "FaInstagram",
                     "label": "Instagram",
                     "url": "https://instagram.com"
                   },
                   {
                     "id": "linkedin",
+                    "icon": "FaLinkedinIn",
                     "label": "LinkedIn",
                     "url": "https://linkedin.com"
                   },
                   {
                     "id": "youtube",
+                    "icon": "FaYoutube",
                     "label": "YouTube",
                     "url": "https://youtube.com"
                   }

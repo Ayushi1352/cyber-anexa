@@ -54,8 +54,14 @@ export interface GlobalUIData {
   servicesMenuLabel: string;
   previousLabel: string;
   nextLabel: string;
+  previousMemberLabel: string;
+  nextMemberLabel: string;
+  /** "{n}" is the slide number */
+  goToSlideLabel: string;
   previousPageLabel: string;
   nextPageLabel: string;
+  /** "{n}" is the page number */
+  goToPageLabel: string;
   paginationLabel: string;
   showTestimonialLabel: string;
   ratingLabel: string;
@@ -354,8 +360,10 @@ export interface ContactDetailItem {
   text: string;
 }
 
-/** id = platform (facebook, instagram, linkedin, youtube); it picks the icon. */
-export type SocialLink = LinkItem;
+export interface SocialLink extends LinkItem {
+  /** react-icons name from components/ui/Icon.tsx */
+  icon: string;
+}
 
 export interface ContactData {
   label: string;

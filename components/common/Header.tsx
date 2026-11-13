@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LuArrowRight, LuChevronDown, LuMenu, LuX } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import type { CompanyData, GlobalUIData, HeaderData } from "@/types/templates.types";
 
 const isActive = (pathname: string, href: string) =>
@@ -67,7 +67,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company: Comp
                       {item.label}
                       {underline}
                     </span>
-                    <LuChevronDown className="size-[0.8rem] transition-transform group-hover:rotate-180" strokeWidth={2.4} />
+                    <Icon name="LuChevronDown" className="size-[0.8rem] transition-transform group-hover:rotate-180" strokeWidth={2.4} />
                   </Link>
                   <div className="invisible absolute left-1/2 top-full w-[17rem] -translate-x-1/2 translate-y-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                     <ul className="rounded-[0.6rem] border border-line bg-white p-[0.5rem] shadow-[0_1.25rem_2.5rem_-0.75rem_var(--color-shadow-navy-18)]">
@@ -103,7 +103,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company: Comp
           className="group ml-[5.65rem] hidden h-[2.72rem] items-center gap-[0.55rem] rounded-full border-2 border-primary bg-primary px-[1.55rem] font-heading text-[0.9375rem] font-semibold text-white shadow-[0_0.5rem_1.2rem_-0.35rem_var(--color-shadow-primary-60)] transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-md xl:inline-flex"
         >
           {buttonText}
-          <LuArrowRight className="size-[0.85rem] transition-transform group-hover:translate-x-0.5" strokeWidth={2.4} />
+          <Icon name="LuArrowRight" className="size-[0.85rem] transition-transform group-hover:translate-x-0.5" strokeWidth={2.4} />
         </Link>
 
         {/* Mobile toggle */}
@@ -114,7 +114,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company: Comp
           aria-label={open ? ui?.closeMenuLabel : ui?.openMenuLabel}
           aria-expanded={open}
         >
-          {open ? <LuX className="size-6" /> : <LuMenu className="size-6" />}
+          {open ? <Icon name="LuX" className="size-6" /> : <Icon name="LuMenu" className="size-6" />}
         </button>
       </nav>
 
@@ -144,7 +144,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company: Comp
                       aria-label={ui?.servicesMenuLabel}
                       aria-expanded={servicesOpen}
                     >
-                      <LuChevronDown className={`size-5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+                      <Icon name="LuChevronDown" className={`size-5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
                     </button>
                   )}
                 </div>
@@ -169,7 +169,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company: Comp
             className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary font-heading text-base font-semibold text-white shadow-sm transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary active:bg-white active:text-primary"
           >
             {buttonText}
-            <LuArrowRight className="size-4" />
+            <Icon name="LuArrowRight" className="size-4" />
           </Link>
         </div>
       </div>

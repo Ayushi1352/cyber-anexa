@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { LuArrowLeft, LuArrowRight, LuStar } from "react-icons/lu";
-import { Heading } from "@/components/ui/Text";
+import { Icon } from "@/components/ui/Icon";
+import { Heading, fill } from "@/components/ui/Text";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { container } from "@/components/ui/classes";
-import { fill } from "@/components/ui/fill";
 import type { GlobalUIData, TestimonialsData } from "@/types/templates.types";
 
 export function TestimonialsSection({ data: content, ui }: { data?: TestimonialsData; ui?: GlobalUIData }) {
@@ -18,7 +17,7 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
   const go = (dir: 1 | -1) => setActive((i) => (i + dir + items.length) % items.length);
 
   return (
-    <section className="section-spacing overflow-hidden bg-[var(--color-section-tint)]">
+    <section className="py-[32px] overflow-hidden bg-[var(--color-section-tint)]">
       <div className={`${container}`}>
         <div className="mx-auto grid max-w-[77rem] grid-cols-1 items-start gap-12 lg:grid-cols-[561fr_550fr] lg:gap-[2.6rem] xl:gap-[7.4rem]">
           {/* Left: text */}
@@ -32,7 +31,7 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
               <span className="font-heading text-[1.25rem] font-semibold leading-none text-navy">{content.rating}</span>
               <span className="flex gap-[0.45rem]" aria-label={fill(ui?.ratingLabel ?? "", { rating: content.rating })}>
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <LuStar key={i} className="size-[1.45rem] fill-[var(--color-star)] text-[var(--color-star)]" strokeWidth={1} />
+                  <Icon name="LuStar" key={i} className="size-[1.45rem] fill-[var(--color-star)] text-[var(--color-star)]" strokeWidth={1} />
                 ))}
               </span>
             </div>
@@ -72,7 +71,7 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
                 className="flex size-[3.56rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:bg-primary active:text-white active:scale-95"
                 aria-label={ui?.previousLabel}
               >
-                <LuArrowLeft className="size-[1.35rem]" strokeWidth={2.2} />
+                <Icon name="LuArrowLeft" className="size-[1.35rem]" strokeWidth={2.2} />
               </button>
               <button
                 type="button"
@@ -80,7 +79,7 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
                 className="flex size-[3.56rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:bg-primary active:text-white active:scale-95"
                 aria-label={ui?.nextLabel}
               >
-                <LuArrowRight className="size-[1.35rem]" strokeWidth={2.2} />
+                <Icon name="LuArrowRight" className="size-[1.35rem]" strokeWidth={2.2} />
               </button>
             </div>
           </div>

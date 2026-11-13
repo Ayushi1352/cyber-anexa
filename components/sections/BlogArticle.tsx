@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LuCalendarDays, LuFolderOpen } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import type { BlogDetailData } from "@/types/templates.types";
 
 const textClass = "font-body text-[1.0625rem] leading-[1.66] text-[var(--color-text-article)] xl:text-[1.2rem]";
@@ -16,12 +16,12 @@ export function BlogArticle({ data: content }: { data: BlogDetailData }) {
 
       <div className="mt-5 flex flex-wrap items-center gap-x-[0.85rem] gap-y-1 font-body text-[0.95rem] xl:mt-[1.4rem] xl:px-[0.4rem] xl:text-[1.03rem]">
         <span className="inline-flex items-center gap-[0.55rem] text-primary">
-          <LuFolderOpen className="size-[1.15rem] fill-primary" strokeWidth={1.5} aria-hidden="true" />
+          <Icon name="LuFolderOpen" className="size-[1.15rem] fill-primary" strokeWidth={1.5} aria-hidden="true" />
           {post.category}
         </span>
         <span className="text-[var(--color-text-faint)]" aria-hidden="true">|</span>
         <span className="inline-flex items-center gap-[0.55rem] text-muted">
-          <LuCalendarDays className="size-[1.15rem] text-primary" strokeWidth={2} aria-hidden="true" />
+          <Icon name="LuCalendarDays" className="size-[1.15rem] text-primary" strokeWidth={2} aria-hidden="true" />
           {post.date}
         </span>
       </div>

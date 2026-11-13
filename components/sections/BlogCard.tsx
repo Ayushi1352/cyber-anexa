@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LuArrowRight, LuCalendarDays, LuFolderOpen } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import { Lines, plainText } from "@/components/ui/Text";
 import type { BlogPost } from "@/types/templates.types";
 
@@ -33,12 +33,12 @@ export function BlogCard({ post, readMore, compact = false }: { post: BlogPost; 
       <div className={`flex min-w-0 flex-1 flex-col px-1 pb-2 sm:px-0 sm:pb-0 ${compact ? "sm:pt-[0.45rem]" : "sm:pt-[0.6rem]"}`}>
         <div className="flex flex-wrap items-center gap-x-[0.6rem] gap-y-1 font-body text-[0.78rem] leading-none">
           <span className="inline-flex items-center gap-[0.45rem] text-primary">
-            <LuFolderOpen className="size-[0.95rem] fill-primary text-primary" strokeWidth={1.5} aria-hidden="true" />
+            <Icon name="LuFolderOpen" className="size-[0.95rem] fill-primary text-primary" strokeWidth={1.5} aria-hidden="true" />
             {post.category}
           </span>
           <span className="text-[var(--color-text-faint)]" aria-hidden="true">|</span>
           <span className="inline-flex items-center gap-[0.45rem] text-muted">
-            <LuCalendarDays className="size-[0.95rem] text-primary" strokeWidth={2} aria-hidden="true" />
+            <Icon name="LuCalendarDays" className="size-[0.95rem] text-primary" strokeWidth={2} aria-hidden="true" />
             {post.date}
           </span>
         </div>
@@ -56,7 +56,7 @@ export function BlogCard({ post, readMore, compact = false }: { post: BlogPost; 
         >
           {readMore}
           <span className={`flex ${compact ? "size-[2.1rem]" : "size-[2.35rem]"} items-center justify-center rounded-full border border-primary/20 bg-[var(--color-blog-tag-bg)] text-primary transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-md`}>
-            <LuArrowRight className="size-[1.05rem]" strokeWidth={2.4} aria-hidden="true" />
+            <Icon name="LuArrowRight" className="size-[1.05rem]" strokeWidth={2.4} aria-hidden="true" />
           </span>
         </Link>
       </div>

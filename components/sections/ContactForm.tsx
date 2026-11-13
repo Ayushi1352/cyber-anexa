@@ -1,6 +1,6 @@
 "use client";
 
-import { LuArrowRight, LuCircleCheck } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import { field } from "@/components/ui/classes";
 import { useFormSubmit } from "@/components/ui/useFormSubmit";
 import type { ContactData } from "@/types/templates.types";
@@ -49,7 +49,7 @@ export function ContactForm({ data: form }: { data: ContactData["form"] }) {
 
       {sent && (
         <p className="mt-5 flex items-center gap-2 rounded-md bg-[var(--color-success-bg)] px-4 py-3 font-body text-[0.95rem] text-[var(--color-success)]" role="status">
-          <LuCircleCheck className="size-5 shrink-0" />
+          <Icon name="LuCircleCheck" className="size-5 shrink-0" />
           {form.success}
         </p>
       )}
@@ -60,7 +60,7 @@ export function ContactForm({ data: form }: { data: ContactData["form"] }) {
           className="group inline-flex h-[3.65rem] items-center justify-center gap-[0.85rem] rounded-full border-2 border-primary bg-primary px-[2.1rem] font-heading text-[1.09rem] font-semibold text-white shadow-[0_0.6rem_1.4rem_-0.4rem_var(--color-shadow-primary-55)] transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-lg xl:w-[15.25rem]"
         >
           {form.buttonText}
-          <LuArrowRight className="size-[1.3rem] transition-transform group-hover:translate-x-1" strokeWidth={2.2} />
+          <Icon name="LuArrowRight" className="size-[1.3rem] transition-transform group-hover:translate-x-1" strokeWidth={2.2} />
         </button>
       </div>
     </form>

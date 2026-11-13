@@ -18,7 +18,7 @@ export function ProjectsSection({
   if (!content) return null;
 
   return (
-    <section className="section-spacing bg-[var(--color-section-tint)]">
+    <section className="py-[32px] bg-[var(--color-section-tint)]">
       <div className={`${container}`}>
         <div className="mx-auto max-w-[71.8rem]">
           <div data-reveal="up">

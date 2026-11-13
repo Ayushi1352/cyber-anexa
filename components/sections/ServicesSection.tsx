@@ -9,7 +9,7 @@ import type { ServicesData } from "@/types/templates.types";
 export function ServicesSection({ data: services }: { data?: ServicesData }) {
   if (!services) return null;
   return (
-    <section className="section-spacing relative overflow-hidden bg-[linear-gradient(180deg,var(--color-services-top)_0%,var(--color-services-bottom)_100%)]">
+    <section className="py-[32px] relative overflow-hidden bg-[linear-gradient(180deg,var(--color-services-top)_0%,var(--color-services-bottom)_100%)]">
       <div className={`${container} relative`}>
         <div data-reveal="up" className="text-center">
           <SectionLabel text={services.label} variant="dots-lines" />

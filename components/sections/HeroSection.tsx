@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LuArrowRight } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import { Heading, Lines } from "@/components/ui/Text";
 import { container } from "@/components/ui/classes";
 import { introHidden } from "@/components/ui/motion";
@@ -13,7 +13,7 @@ const blob =
 export const HeroSection = ({ data }: { data?: HeroData }) => {
   if (!data) return null;
   return (
-    <section className="section-spacing relative overflow-hidden bg-white">
+    <section className="py-[32px] relative overflow-hidden bg-white">
       <div className={`${container} relative z-10 flex flex-col py-6 md:min-h-[30rem] md:justify-center xl:min-h-[35rem] xl:py-8`}>
         <div className="pt-3 sm:pt-4 md:pt-6 xl:pt-8 md:w-[54%] md:pr-4 xl:w-[52%] xl:pl-[2rem]">
           <h1
@@ -37,7 +37,7 @@ export const HeroSection = ({ data }: { data?: HeroData }) => {
               className="group mt-7 inline-flex h-[3.15rem] items-center gap-[0.85rem] rounded-[0.375rem] border-2 border-primary bg-primary px-[1.9rem] font-heading text-[1.0625rem] font-semibold text-white shadow-sm transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-lg sm:mt-8 xl:mt-[2.4rem] xl:h-[3.8rem] xl:px-[2.3rem] xl:text-[1.06rem]"
             >
               {data.buttonText}
-              <LuArrowRight className="size-[1.25rem] transition-transform group-hover:translate-x-1" strokeWidth={2.2} />
+              <Icon name="LuArrowRight" className="size-[1.25rem] transition-transform group-hover:translate-x-1" strokeWidth={2.2} />
             </Link>
           </div>
         </div>

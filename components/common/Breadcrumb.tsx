@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { LuChevronRight } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import { introHidden } from "@/components/ui/motion";
 import type { BreadcrumbData, GlobalUIData } from "@/types/templates.types";
 
@@ -40,7 +40,7 @@ export const Breadcrumb = ({ data, ui }: { data?: BreadcrumbData; ui?: GlobalUID
                 <Fragment key={crumb.id}>
                   {index > 0 && (
                     <li aria-hidden="true">
-                      <LuChevronRight className="size-[0.85rem]" strokeWidth={2.4} />
+                      <Icon name="LuChevronRight" className="size-[0.85rem]" strokeWidth={2.4} />
                     </li>
                   )}
                   {crumb.url && !isLast ? (

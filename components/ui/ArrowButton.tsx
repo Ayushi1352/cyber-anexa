@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LuArrowRight } from "react-icons/lu";
+import { Icon } from "./Icon";
 
 /** Primary blue call-to-action link with a trailing arrow. "pill" = fully rounded with glow, "rounded" = small radius. */
 export const ArrowButton = ({
@@ -23,7 +23,7 @@ export const ArrowButton = ({
       className={`group inline-flex items-center justify-center gap-[0.65rem] border-2 border-primary bg-primary font-body font-medium text-white transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-lg ${shapeClass} ${className}`}
     >
       <span>{label}</span>
-      <LuArrowRight className={`shrink-0 transition-transform duration-300 group-hover:translate-x-1 ${iconClassName}`} strokeWidth={2} aria-hidden="true" />
+      <Icon name="LuArrowRight" className={`shrink-0 transition-transform duration-300 group-hover:translate-x-1 ${iconClassName}`} strokeWidth={2} aria-hidden="true" />
     </Link>
   );
 };

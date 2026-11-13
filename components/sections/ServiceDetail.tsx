@@ -7,7 +7,7 @@ import type { ServiceDetailData } from "@/types/templates.types";
 export function ServiceDetail({ data }: { data?: ServiceDetailData }) {
   if (!data) return null;
   return (
-    <section className="section-spacing bg-white">
+    <section className="py-[32px] bg-white">
       <div data-reveal="up" className="mx-auto w-full max-w-[78.75rem] overflow-hidden px-0 sm:px-5 xl:px-0">
         <ServiceIntro data={data} />
         <ServiceOverview data={data} />

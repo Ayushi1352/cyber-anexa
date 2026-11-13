@@ -1,6 +1,6 @@
 "use client";
 
-import { LuArrowRight, LuCircleCheck, LuChevronDown } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import { Heading, Lines } from "@/components/ui/Text";
 import { field } from "@/components/ui/classes";
 import { useFormSubmit } from "@/components/ui/useFormSubmit";
@@ -60,7 +60,7 @@ export function QuoteForm({ data: form }: { data: QuoteData["form"] }) {
                   </option>
                 ))}
               </select>
-              <LuChevronDown className="pointer-events-none absolute right-[1rem] top-1/2 size-[1.1rem] -translate-y-1/2 text-navy" strokeWidth={2.2} />
+              <Icon name="LuChevronDown" className="pointer-events-none absolute right-[1rem] top-1/2 size-[1.1rem] -translate-y-1/2 text-navy" strokeWidth={2.2} />
             </div>
           </div>
           <div className="sm:col-span-2">
@@ -83,7 +83,7 @@ export function QuoteForm({ data: form }: { data: QuoteData["form"] }) {
 
         {sent && (
           <p className="mt-5 flex items-center gap-2 rounded-md bg-[var(--color-success-bg)] px-4 py-3 font-body text-[0.95rem] text-[var(--color-success)]" role="status">
-            <LuCircleCheck className="size-5 shrink-0" />
+            <Icon name="LuCircleCheck" className="size-5 shrink-0" />
             {form.success}
           </p>
         )}
@@ -93,7 +93,7 @@ export function QuoteForm({ data: form }: { data: QuoteData["form"] }) {
           className="group mt-6 inline-flex h-[3.45rem] w-full items-center justify-center gap-[0.9rem] rounded-[0.5rem] border-2 border-primary bg-primary font-body text-[1.19rem] font-medium text-white shadow-sm transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-lg xl:mt-[1.55rem]"
         >
           {form.buttonText}
-          <LuArrowRight className="size-[1.35rem] transition-transform group-hover:translate-x-1" strokeWidth={2.2} />
+          <Icon name="LuArrowRight" className="size-[1.35rem] transition-transform group-hover:translate-x-1" strokeWidth={2.2} />
         </button>
       </form>
     </div>

@@ -45,7 +45,7 @@ export function WhyChooseUs({ data: whyChoose }: { data?: WhyChooseData }) {
   );
 
   return (
-    <section className="section-spacing relative overflow-hidden bg-white">
+    <section className="py-[32px] relative overflow-hidden bg-white">
       <div
         className="pointer-events-none absolute -left-[10rem] top-[30%] h-[40rem] w-[30rem] rounded-full bg-[var(--color-blue-wash)] blur-3xl"
         aria-hidden="true"

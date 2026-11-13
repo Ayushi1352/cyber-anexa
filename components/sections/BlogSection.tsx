@@ -7,7 +7,7 @@ import type { BlogsData, GlobalUIData } from "@/types/templates.types";
 export function BlogSection({ data: content, ui }: { data?: BlogsData; ui?: GlobalUIData }) {
   if (!content) return null;
   return (
-    <section className="section-spacing bg-[linear-gradient(180deg,var(--color-section-tint)_0%,var(--color-light)_100%)]">
+    <section className="py-[32px] bg-[linear-gradient(180deg,var(--color-section-tint)_0%,var(--color-light)_100%)]">
       <div className="mx-auto w-full max-w-[90rem] px-5 md:px-8 xl:px-[2.35rem]">
         <div data-reveal="up" className="text-center">
           <SectionLabel text={content.label} variant="dots-lines" />

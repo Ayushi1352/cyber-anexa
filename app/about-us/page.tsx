@@ -18,7 +18,7 @@ export default function AboutUsPage() {
       <Breadcrumb data={commonData.aboutBreadcrumb} ui={commonData.globalUI} />
       <AboutSection data={sectionData.AboutUs?.variants?.CyberSecurityAboutUs1} />
       <WhyChooseUs data={sectionData.WhyChooseUs?.variants?.CyberSecurityWhyChooseUs1} />
-      <TeamSection data={sectionData.Team?.variants?.CyberSecurityTeam1} />
+      <TeamSection data={sectionData.Team?.variants?.CyberSecurityTeam1} ui={commonData.globalUI} />
     </main>
   );
 }

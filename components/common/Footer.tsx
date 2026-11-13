@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LuArrowRight, LuChevronRight, LuMail, LuMapPin, LuPhone } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import { Lines } from "@/components/ui/Text";
 import type { CompanyData, FooterData, LinkItem } from "@/types/templates.types";
 
@@ -19,7 +19,7 @@ const LinkList = ({ links, spacing }: { links: LinkItem[]; spacing: string }) =>
           href={link.url}
           className="group inline-flex items-start gap-[0.55rem] font-footer text-[0.875rem] font-normal leading-snug text-footer transition-colors hover:text-primary sm:items-center sm:gap-[1.1rem] sm:text-[1.0625rem] xl:text-[1.15rem]"
         >
-          <LuChevronRight className="mt-[0.18rem] size-[0.82rem] shrink-0 text-primary transition-transform group-hover:translate-x-0.5 sm:mt-0 sm:size-[1rem]" strokeWidth={2.4} />
+          <Icon name="LuChevronRight" className="mt-[0.18rem] size-[0.82rem] shrink-0 text-primary transition-transform group-hover:translate-x-0.5 sm:mt-0 sm:size-[1rem]" strokeWidth={2.4} />
           <span>{link.label}</span>
         </Link>
       </li>
@@ -30,9 +30,9 @@ const LinkList = ({ links, spacing }: { links: LinkItem[]; spacing: string }) =>
 export const Footer = ({ data, company }: { data?: FooterData; company: CompanyData }) => {
   if (!data) return null;
   const contactRows = [
-    { icon: LuMapPin, content: company.address.split("\n"), href: undefined, filled: false },
-    { icon: LuPhone, content: [company.phone], href: company.phoneHref, filled: true },
-    { icon: LuMail, content: [company.email], href: company.emailHref, filled: false },
+    { icon: "LuMapPin", content: company.address.split("\n"), href: undefined, filled: false },
+    { icon: "LuPhone", content: [company.phone], href: company.phoneHref, filled: true },
+    { icon: "LuMail", content: [company.email], href: company.emailHref, filled: false },
   ];
 
   return (
@@ -74,7 +74,7 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
               <Lines text={data.description} breakFrom="lg" />
             </p>
             <ul className="mt-5 flex flex-col gap-4 sm:gap-5 xl:mt-6 xl:gap-[1.25rem]">
-              {contactRows.map(({ icon: IconCmp, content, href, filled }) => {
+              {contactRows.map(({ icon, content, href, filled }) => {
                 const text = (
                   <span className="font-footer text-[1.0625rem] leading-[1.3] text-footer xl:text-[1.125rem]">
                     {content.map((line) => (
@@ -87,7 +87,7 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
                 return (
                   <li key={content[0]} className="flex items-start gap-[1.4rem]">
                     <span className="flex size-[3.2rem] shrink-0 items-center justify-center rounded-full bg-[var(--color-footer-icon-bg)]">
-                      <IconCmp className="size-[1.25rem] text-primary" fill={filled ? "currentColor" : "none"} strokeWidth={filled ? 0 : 2.4} />
+                      <Icon name={icon} className="size-[1.25rem] text-primary" fill={filled ? "currentColor" : "none"} strokeWidth={filled ? 0 : 2.4} />
                     </span>
                     <span className={content.length > 1 ? "pt-[0.05rem]" : "self-center"}>
                       {href ? (
@@ -127,7 +127,7 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
               className="group mt-[1.6rem] inline-flex h-[3.05rem] items-center gap-[1rem] rounded-[0.5rem] border-2 border-primary bg-primary px-[1.8rem] font-footer text-[1.125rem] font-medium text-white shadow-sm transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-lg"
             >
               {data.getInTouch.buttonText}
-              <LuArrowRight className="size-[1.2rem] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+              <Icon name="LuArrowRight" className="size-[1.2rem] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
             </Link>
           </div>
         </div>

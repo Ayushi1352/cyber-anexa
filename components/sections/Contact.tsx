@@ -10,7 +10,7 @@ export function Contact({ data }: { data?: ContactData }) {
   if (!data) return null;
   return (
     <>
-      <section className="section-spacing bg-[linear-gradient(180deg,var(--color-page-top)_0%,var(--color-page-bottom-mid)_100%)]">
+      <section className="py-[32px] bg-[linear-gradient(180deg,var(--color-page-top)_0%,var(--color-page-bottom-mid)_100%)]">
         <div className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-5 md:px-8 lg:grid-cols-[697fr_570fr] lg:items-end lg:gap-[1rem] xl:pl-[5.1rem] xl:pr-[4.6rem]">
           <div data-reveal="up">
             <SectionLabel text={data.label} variant="line-left" />

@@ -22,13 +22,13 @@ export function ContactDetails({ data: details }: { data: ContactData["details"]
           {details.items.map((item) => (
             <li key={item.title} className="flex items-start gap-[1.2rem]">
               <span className="flex size-[3.3rem] shrink-0 items-center justify-center rounded-full bg-primary">
-                <Icon name={item.icon} className="size-[1.3rem] text-white" fill={item.icon === "phone" ? "currentColor" : "none"} strokeWidth={item.icon === "phone" ? 0 : 2.2} />
+                <Icon name={item.icon} className="size-[1.3rem] text-white" fill={item.icon === "LuPhone" ? "currentColor" : "none"} strokeWidth={item.icon === "LuPhone" ? 0 : 2.2} />
               </span>
               <div>
                 <p className="font-body text-[0.98rem] font-semibold leading-snug text-white">{item.title}</p>
                 <div className="mt-[0.3rem] font-body text-[0.98rem] leading-[1.53] text-white/85">
                   {item.text.split("\n").map((line) => {
-                    if (item.icon === "phone") {
+                    if (item.icon === "LuPhone") {
                       return (
                         <a
                           key={line}
@@ -39,7 +39,7 @@ export function ContactDetails({ data: details }: { data: ContactData["details"]
                         </a>
                       );
                     }
-                    if (item.icon === "mail") {
+                    if (item.icon === "LuMail") {
                       return (
                         <a
                           key={line}
@@ -74,7 +74,7 @@ export function ContactDetails({ data: details }: { data: ContactData["details"]
                 aria-label={s.label}
                 className="flex size-[2.9rem] items-center justify-center rounded-full bg-[var(--color-contact-panel-strip)] text-white transition-colors hover:bg-primary"
               >
-                <Icon name={s.id} className="size-[1.05rem]" />
+                <Icon name={s.icon} className="size-[1.05rem]" />
               </a>
             ))}
           </div>

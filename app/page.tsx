@@ -21,7 +21,7 @@ export default function Home() {
       <ServicesSection data={sectionData.Services?.variants?.CyberSecurityServices1} />
       <WhyChooseUs data={sectionData.WhyChooseUs?.variants?.CyberSecurityWhyChooseUs1} />
       <ProjectsSection data={sectionData.Projects?.variants?.CyberSecurityProjects1} />
-      <TeamSection data={sectionData.Team?.variants?.CyberSecurityTeam1} showButton={false} />
+      <TeamSection data={sectionData.Team?.variants?.CyberSecurityTeam1} ui={commonData.globalUI} showButton={false} />
       <TestimonialsSection data={sectionData.Testimonials?.variants?.CyberSecurityTestimonials1} ui={commonData.globalUI} />
       <BlogSection data={sectionData.Blogs?.variants?.CyberSecurityBlogs1} ui={commonData.globalUI} />
     </main>

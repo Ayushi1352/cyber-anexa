@@ -51,7 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       // Everything clickable gets the pointer; with reduced motion turned on nothing scrolls smoothly.
       className={`${fontClasses} scroll-smooth antialiased text-[16px] xl:text-[length:calc(100vw/90)] min-[1920px]:text-[length:21.333px] [&_:where(a[href],button:not(:disabled),select,summary,label[for],[role=button])]:cursor-pointer motion-reduce:scroll-auto`}
     >
-      <body>
+      <body className="min-h-screen [&_img]:select-none">
         {/*
           The site never grows wider than the 1920px design (90rem once the root font size stops growing),
           so on wide screens or when zoomed out it stays centred instead of stretching.
@@ -59,10 +59,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         */}
         <div className="mx-auto flex min-h-screen w-full max-w-[90rem] flex-col overflow-x-clip bg-white">
           <Header data={sectionData.Header?.variants?.CyberSecurityHeader1} company={commonData.company} ui={commonData.globalUI} />
-          <ScrollToTop>{children}</ScrollToTop>
+          <ScrollToTop>
+            {children}
+            <ScrollReveal />
+          </ScrollToTop>
           <Footer data={commonData.Footer} company={commonData.company} />
         </div>
-        <ScrollReveal />
       </body>
     </html>
   );

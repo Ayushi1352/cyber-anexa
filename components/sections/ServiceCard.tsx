@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LuArrowRight } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import { Lines, plainText } from "@/components/ui/Text";
 import type { ServicesGridItem } from "@/types/templates.types";
 
@@ -38,7 +38,7 @@ export function ServiceCard({ service, readMore }: { service: ServicesGridItem; 
             className="group/btn mt-[0.9rem] inline-flex items-center gap-[0.6rem] font-body text-[1.0625rem] font-medium text-primary transition-all duration-300 hover:text-primary-dark xl:text-[1.09rem]"
           >
             <span>{readMore}</span>
-            <LuArrowRight className="size-[1.1rem] transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={2.2} aria-hidden="true" />
+            <Icon name="LuArrowRight" className="size-[1.1rem] transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={2.2} aria-hidden="true" />
           </Link>
         </div>
       </div>

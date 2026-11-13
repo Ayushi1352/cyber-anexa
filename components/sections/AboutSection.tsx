@@ -9,7 +9,7 @@ import type { AboutData } from "@/types/templates.types";
 export function AboutSection({ data: about }: { data?: AboutData }) {
   if (!about) return null;
   return (
-    <section className="section-spacing !pt-12 sm:!pt-16 xl:!pt-20 relative overflow-hidden bg-[var(--color-about-bg)]">
+    <section className="py-[32px] !pt-12 sm:!pt-16 xl:!pt-20 relative overflow-hidden bg-[var(--color-about-bg)]">
       {/* soft diagonal light bands from the design */}
       <div
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_0%,transparent_38%,var(--color-glass-60)_38%,var(--color-glass-60)_56%,transparent_56%)]"

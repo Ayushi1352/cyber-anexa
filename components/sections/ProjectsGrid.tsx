@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import { Pagination } from "@/components/ui/Pagination";
 import { Lines, plainText } from "@/components/ui/Text";
 import type { GlobalUIData, ProjectItem } from "@/types/templates.types";
 
@@ -53,8 +53,6 @@ export function ProjectsGrid({
     setPage(Math.min(totalPages, Math.max(1, nextPage)));
     document.getElementById("projects-list")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  const navBtn =
-    "flex size-[2.2rem] items-center justify-center rounded-full border border-[var(--color-pagination-border)] bg-white text-navy shadow-[0_0.3rem_0.8rem_-0.4rem_var(--color-shadow-blue-30)] transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white disabled:pointer-events-none disabled:opacity-40";
 
   return (
     <>
@@ -71,30 +69,16 @@ export function ProjectsGrid({
         </div>
       </div>
 
-      {paginated && totalPages > 1 && (
-        <nav className="mt-8 flex items-center justify-center gap-[0.3rem] xl:mt-[1.9rem]" aria-label={ui?.paginationLabel}>
-          <button type="button" onClick={() => goTo(page - 1)} disabled={page === 1} className={navBtn} aria-label={ui?.previousPageLabel}>
-            <LuChevronLeft className="size-[1rem]" strokeWidth={2.4} />
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
-            <button
-              key={pageNumber}
-              type="button"
-              onClick={() => goTo(pageNumber)}
-              aria-current={pageNumber === page ? "page" : undefined}
-              className={`flex size-[2.2rem] items-center justify-center rounded-full font-body text-[0.875rem] font-semibold transition-all duration-300 ${
-                pageNumber === page
-                  ? "border border-primary bg-primary text-white shadow-[0_0.4rem_0.9rem_-0.3rem_var(--color-shadow-primary-60)] hover:border-primary hover:bg-white hover:text-primary"
-                  : "border border-[var(--color-pagination-border)] bg-white text-navy hover:border-primary hover:bg-primary hover:text-white"
-              }`}
-            >
-              {pageNumber}
-            </button>
-          ))}
-          <button type="button" onClick={() => goTo(page + 1)} disabled={page === totalPages} className={navBtn} aria-label={ui?.nextPageLabel}>
-            <LuChevronRight className="size-[1rem]" strokeWidth={2.4} />
-          </button>
-        </nav>
+      {paginated && (
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onChange={goTo}
+          label={ui?.paginationLabel}
+          previousLabel={ui?.previousPageLabel}
+          nextLabel={ui?.nextPageLabel}
+          pageLabel={ui?.goToPageLabel}
+        />
       )}
     </>
   );

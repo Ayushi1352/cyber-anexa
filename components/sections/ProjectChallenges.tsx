@@ -1,4 +1,4 @@
-import { LuLightbulb, LuTarget } from "react-icons/lu";
+import { Icon } from "@/components/ui/Icon";
 import type { ProjectDetailData } from "@/types/templates.types";
 
 export function ProjectChallenges({ data: content }: { data: ProjectDetailData }) {
@@ -6,7 +6,7 @@ export function ProjectChallenges({ data: content }: { data: ProjectDetailData }
     {
       title: content.challengesLabel,
       items: content.challenges,
-      icon: LuTarget,
+      icon: "LuTarget",
       box: "bg-[var(--color-blue-wash)]",
       iconColor: "text-[var(--color-challenge)]",
       dot: "bg-[var(--color-challenge)]",
@@ -14,7 +14,7 @@ export function ProjectChallenges({ data: content }: { data: ProjectDetailData }
     {
       title: content.solutionsLabel,
       items: content.solutions,
-      icon: LuLightbulb,
+      icon: "LuLightbulb",
       box: "bg-[var(--color-success-bg)]",
       iconColor: "text-[var(--color-solution)]",
       dot: "bg-[var(--color-solution-bg)]",
@@ -23,10 +23,10 @@ export function ProjectChallenges({ data: content }: { data: ProjectDetailData }
 
   return (
     <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-[837fr_806fr] xl:mt-[1.65rem] xl:gap-[1.9rem]">
-      {boxes.map(({ title, items, icon: IconCmp, box, iconColor, dot }) => (
+      {boxes.map(({ title, items, icon, box, iconColor, dot }) => (
         <div key={title} className={`rounded-[0.56rem] px-6 py-7 xl:min-h-[15.5rem] xl:px-[2.1rem] xl:pt-[1.75rem] ${box}`}>
           <h3 className="flex items-center gap-[0.9rem] font-body text-[1.125rem] font-bold text-navy xl:text-[1.16rem]">
-            <IconCmp className={`size-[1.85rem] ${iconColor}`} strokeWidth={2} aria-hidden="true" />
+            <Icon name={icon} className={`size-[1.85rem] ${iconColor}`} strokeWidth={2} aria-hidden="true" />
             {title}
           </h3>
           <ul className="mt-4 space-y-[0.6rem] xl:mt-[1.15rem] xl:space-y-[0.55rem]">
