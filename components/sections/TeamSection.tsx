@@ -129,8 +129,8 @@ export function TeamSection({
         <div className={`${container} !max-w-none xl:!px-[3.1rem]`}>
           <div data-reveal="up" className="text-center">
             <SectionLabel text={content.label} variant="dots-lines" />
-            <h2 className="mt-4 font-heading text-[1.5rem] font-extrabold leading-[1.2] tracking-[-0.02em] text-navy min-[360px]:text-[1.75rem] min-[400px]:text-[1.95rem] sm:text-[2.5rem] xl:mt-[1rem] xl:text-[3.15rem] xl:leading-[1.13]">
-              <Heading text={content.title} highlight={content.titleHighlight} breakFrom="always" />
+            <h2 className="mx-auto mt-3 max-w-[46rem] font-heading text-[1.25rem] font-extrabold leading-[1.25] tracking-[-0.02em] text-navy min-[360px]:text-[1.35rem] min-[400px]:text-[1.5rem] sm:text-[2rem] xl:mt-[1rem] xl:text-[3.15rem] xl:leading-[1.13]">
+              <Heading text={content.title} highlight={content.titleHighlight} breakFrom="md" />
             </h2>
             <p className="mx-auto mt-4 max-w-[50rem] font-body text-[1.0625rem] leading-[1.45] text-body xl:mt-[0.8rem] xl:text-[1.07rem] xl:leading-[1.41]">
               <Lines text={content.description} breakFrom="lg" />

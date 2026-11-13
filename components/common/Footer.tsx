@@ -67,13 +67,13 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
                 width={company.logo.width}
                 height={company.logo.height}
                 loading="eager"
-                className="h-auto w-[15rem] xl:w-[22.35rem]"
+                className="h-auto w-[11rem] sm:w-[12.5rem] xl:w-[15rem]"
               />
             </Link>
             <p className="mt-[0.85rem] max-w-[26rem] font-footer text-[1.0625rem] leading-[1.4] text-footer xl:text-[1.2rem] xl:leading-[1.33]">
               <Lines text={data.description} breakFrom="lg" />
             </p>
-            <ul className="mt-[1.05rem] flex flex-col gap-[0.4rem] xl:gap-[0.12rem]">
+            <ul className="mt-5 flex flex-col gap-4 sm:gap-5 xl:mt-6 xl:gap-[1.25rem]">
               {contactRows.map(({ icon: IconCmp, content, href, filled }) => {
                 const text = (
                   <span className="font-footer text-[1.0625rem] leading-[1.3] text-footer xl:text-[1.125rem]">

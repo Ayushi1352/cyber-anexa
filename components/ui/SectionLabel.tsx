@@ -44,34 +44,17 @@ export function SectionLabel({ text, variant = "lines", className = "" }: Props)
     );
   }
 
-  if (variant === "dot-lines") {
+  if (variant === "dot-lines" || variant === "dots-lines") {
     return (
-      <div className={`flex items-center justify-center gap-[0.9rem] ${className}`}>
-        <Line className="w-[2.5rem] xl:w-[3.9rem]" />
-        <span className="flex items-center gap-[0.55rem]">
-          <Dot />
-          <span className="font-body text-[0.875rem] font-semibold uppercase leading-none tracking-[0.01em] text-primary xl:text-[1rem]">
-            {text}
-          </span>
-        </span>
-        <Line className="w-[2.5rem] xl:w-[3.9rem]" />
-      </div>
-    );
-  }
-
-  if (variant === "dots-lines") {
-    return (
-      <div className={`flex items-center justify-center gap-[1.4rem] ${className}`}>
+      <div className={`flex items-center justify-center gap-[0.9rem] sm:gap-[1.1rem] ${className}`}>
         <span className="flex items-center">
-          <Line className="w-[2.5rem] xl:w-[3.9rem]" />
+          <Line className="w-[2rem] sm:w-[2.5rem] xl:w-[3.25rem]" />
           <Dot className="size-[0.45rem]" />
         </span>
-        <span className="font-body text-[0.8125rem] font-semibold uppercase leading-none text-primary xl:text-[0.875rem]">
-          {text}
-        </span>
+        {label}
         <span className="flex items-center">
           <Dot className="size-[0.45rem]" />
-          <Line className="w-[2.5rem] xl:w-[3.9rem]" />
+          <Line className="w-[2rem] sm:w-[2.5rem] xl:w-[3.25rem]" />
         </span>
       </div>
     );
@@ -80,12 +63,9 @@ export function SectionLabel({ text, variant = "lines", className = "" }: Props)
   // "lines": ——  TEXT  ——
   return (
     <div className={`flex items-center justify-center gap-[0.9rem] ${className}`}>
-      <span className="flex items-center">
-        <span className="block size-[0.2rem] rounded-full bg-primary" aria-hidden="true" />
-        <Line className="w-[1.6rem] xl:w-[1.75rem]" />
-      </span>
+      <Line className="w-[2rem] sm:w-[2.5rem] xl:w-[3.25rem]" />
       {label}
-      <Line className="w-[1.75rem]" />
+      <Line className="w-[2rem] sm:w-[2.5rem] xl:w-[3.25rem]" />
     </div>
   );
 }

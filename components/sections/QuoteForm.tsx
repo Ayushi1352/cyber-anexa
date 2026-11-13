@@ -20,8 +20,8 @@ export function QuoteForm({ data: form }: { data: QuoteData["form"] }) {
 
   return (
     <div className="rounded-[0.9rem] bg-white px-5 pb-8 pt-8 shadow-[0_1rem_2.5rem_-1.5rem_var(--color-shadow-blue-30)] sm:px-[2.7rem] xl:pb-[3.3rem] xl:pt-[2.35rem]">
-      <h2 className="font-heading text-[1.45rem] font-extrabold leading-tight tracking-[-0.02em] text-navy min-[360px]:text-[1.65rem] sm:text-[1.9rem] xl:text-[2.3rem]">
-        <Heading text={form.title} highlight={form.titleHighlight} />
+      <h2 className="font-heading text-[1.25rem] font-extrabold leading-tight tracking-[-0.02em] text-navy min-[360px]:text-[1.35rem] min-[400px]:text-[1.5rem] sm:text-[1.9rem] xl:text-[2.3rem]">
+        <Heading text={form.title} highlight={form.titleHighlight} breakFrom="md" />
       </h2>
       <p className="mt-3 font-body text-[1rem] leading-[1.68] text-body xl:mt-[0.5rem]">
         <Lines text={form.description} breakFrom="lg" />

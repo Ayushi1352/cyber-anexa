@@ -421,10 +421,10 @@
             "CyberSecurityHero1": {
               "title": "Advanced Cyber\nSecurity Solutions\nFor a Safer Tomorrow",
               "titleHighlight": "Safer Tomorrow",
-              "description": "At CyberAnexa, we deliver innovative cybersecurity solutions to protect your data, systems, and business from evolving digital threats.",
+              "description": "At CyberAnexa, we deliver innovative cybersecurity solutions\nto protect your data, systems, and business from evolving\ndigital threats.",
               "buttonText": "Get a Quote",
               "buttonUrl": "/get-a-quote",
-              "image": "/images/home/hero-analyst.webp",
+              "image": "/images/home/hero-cyber-v3.webp",
               "imageAlt": "Cyber security analyst monitoring a protected network"
             }
           }

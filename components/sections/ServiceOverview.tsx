@@ -16,8 +16,8 @@ export function ServiceOverview({ data: detail }: { data: ServiceDetailData }) {
       </div>
       <div className="xl:pb-[2.4rem]">
         <span className="block h-[0.14rem] w-[3.3rem] bg-primary xl:-ml-[0.85rem]" aria-hidden="true" />
-        <h2 className="mt-4 font-heading text-[1.4rem] font-extrabold leading-tight tracking-[-0.015em] text-navy min-[360px]:text-[1.6rem] sm:text-[1.9rem] xl:mt-[0.9rem] xl:text-[2.2rem]">
-          <Heading text={detail.overviewTitle} highlight={detail.overviewTitleHighlight} />
+        <h2 className="mt-3 font-heading text-[1.25rem] font-extrabold leading-tight tracking-[-0.015em] text-navy min-[360px]:text-[1.35rem] min-[400px]:text-[1.5rem] sm:text-[1.9rem] xl:mt-[0.9rem] xl:text-[2.2rem]">
+          <Heading text={detail.overviewTitle} highlight={detail.overviewTitleHighlight} breakFrom="md" />
         </h2>
         <div className="mt-4 space-y-[1.2rem] xl:mt-[1.25rem]">
           {detail.overview.map((paragraph) => (

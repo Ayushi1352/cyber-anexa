@@ -12,9 +12,9 @@ export function ServicesSection({ data: services }: { data?: ServicesData }) {
     <section className="section-spacing relative overflow-hidden bg-[linear-gradient(180deg,var(--color-services-top)_0%,var(--color-services-bottom)_100%)]">
       <div className={`${container} relative`}>
         <div data-reveal="up" className="text-center">
-          <SectionLabel text={services.label} variant="lines" />
-          <h2 className="mx-auto mt-4 font-heading text-[1.45rem] font-extrabold leading-[1.2] tracking-[-0.02em] text-navy min-[360px]:text-[1.65rem] min-[400px]:text-[1.85rem] sm:text-[2.4rem] xl:mt-[0.9rem] xl:text-[2.81rem] xl:leading-[1.13]">
-            <Heading text={services.title} highlight={services.titleHighlight} breakFrom="always" />
+          <SectionLabel text={services.label} variant="dots-lines" />
+          <h2 className="-mx-2 mt-3 max-w-[46rem] font-heading text-[1.125rem] font-extrabold leading-[1.25] tracking-[-0.02em] text-navy sm:mx-auto min-[360px]:text-[1.35rem] min-[400px]:text-[1.5rem] sm:text-[2rem] xl:mt-[0.9rem] xl:text-[2.81rem] xl:leading-[1.13]">
+            <Heading text={services.title} highlight={services.titleHighlight} breakFrom="md" />
           </h2>
         </div>
 

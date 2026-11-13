@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { LuArrowLeft, LuArrowRight, LuStar } from "react-icons/lu";
 import { Heading } from "@/components/ui/Text";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 import { container } from "@/components/ui/classes";
 import { fill } from "@/components/ui/fill";
 import type { GlobalUIData, TestimonialsData } from "@/types/templates.types";
@@ -22,15 +23,9 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
         <div className="mx-auto grid max-w-[77rem] grid-cols-1 items-start gap-12 lg:grid-cols-[561fr_550fr] lg:gap-[2.6rem] xl:gap-[7.4rem]">
           {/* Left: text */}
           <div data-reveal="left" className="xl:pt-[0.15rem]">
-            <div className="flex items-center gap-[1.05rem]">
-              <span className="block h-[0.094rem] w-[3rem] bg-primary" aria-hidden="true" />
-              <span className="font-body text-[0.875rem] font-semibold uppercase leading-none text-primary xl:text-[0.94rem]">
-                {content.label}
-              </span>
-              <span className="block h-[0.094rem] w-[3rem] bg-primary" aria-hidden="true" />
-            </div>
-            <h2 className="mt-5 font-heading text-[1.55rem] font-extrabold leading-[1.15] tracking-[-0.02em] text-navy min-[360px]:text-[1.8rem] min-[400px]:text-[2.1rem] sm:text-[2.6rem] sm:leading-[1.12] xl:mt-[1.35rem] xl:text-[3.25rem] xl:leading-[1.1]">
-              <Heading text={content.title} highlight={content.titleHighlight} breakFrom="always" />
+            <SectionLabel text={content.label} variant="line-left" />
+            <h2 className="mt-3 font-heading text-[1.25rem] font-extrabold leading-[1.25] tracking-[-0.02em] text-navy min-[360px]:text-[1.35rem] min-[400px]:text-[1.5rem] sm:text-[2.2rem] sm:leading-[1.15] xl:mt-[1.35rem] xl:text-[3.25rem] xl:leading-[1.1]">
+              <Heading text={content.title} highlight={content.titleHighlight} breakFrom="md" />
             </h2>
 
             <div className="mt-8 flex items-center gap-[1rem] xl:mt-[1.7rem]">
@@ -74,7 +69,7 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
               <button
                 type="button"
                 onClick={() => go(-1)}
-                className="flex size-[3.56rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md"
+                className="flex size-[3.56rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:bg-primary active:text-white active:scale-95"
                 aria-label={ui?.previousLabel}
               >
                 <LuArrowLeft className="size-[1.35rem]" strokeWidth={2.2} />
@@ -82,7 +77,7 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
               <button
                 type="button"
                 onClick={() => go(1)}
-                className="flex size-[3.56rem] items-center justify-center rounded-full border-2 border-primary bg-primary text-white shadow-[0_0.5rem_1.2rem_-0.4rem_var(--color-shadow-primary-60)] transition-all duration-300 hover:bg-white hover:text-primary hover:shadow-md"
+                className="flex size-[3.56rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:bg-primary active:text-white active:scale-95"
                 aria-label={ui?.nextLabel}
               >
                 <LuArrowRight className="size-[1.35rem]" strokeWidth={2.2} />

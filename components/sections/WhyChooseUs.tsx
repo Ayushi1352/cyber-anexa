@@ -34,13 +34,13 @@ export function WhyChooseUs({ data: whyChoose }: { data?: WhyChooseData }) {
 
   const oval = (
     <div className="relative mx-auto aspect-[518/768] w-full max-w-[17.5rem] sm:max-w-[20rem] lg:max-w-none">
-      <div className="absolute inset-0 rounded-[50%] border-2 border-[var(--color-why-border)]" aria-hidden="true" />
-      <div className="absolute inset-[0.55rem] overflow-hidden rounded-[50%]">
+      <div className="absolute inset-0 rounded-[50%/43%] border-[0.125rem] border-[var(--color-why-border)]" aria-hidden="true" />
+      <div className="absolute inset-[0.55rem] overflow-hidden rounded-[50%/43%]">
         <Image src={whyChoose.image} alt={whyChoose.imageAlt} fill sizes="(min-width: 1024px) 28vw, 80vw" className="object-cover" />
       </div>
-      <span className="absolute left-[14.6%] top-[14.6%] size-[0.95rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-blue-accent)] shadow-sm" aria-hidden="true" />
-      <span className="absolute left-[1.1%] top-[60.4%] size-[0.95rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-blue-accent)] shadow-sm" aria-hidden="true" />
-      <span className="absolute left-[99.6%] top-[56%] size-[0.95rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-blue-accent)] shadow-sm" aria-hidden="true" />
+      <span className="absolute left-[12.8%] top-[14.3%] size-[0.95rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-blue-accent)] shadow-sm" aria-hidden="true" />
+      <span className="absolute left-[0.2%] top-[60.7%] size-[0.95rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-blue-accent)] shadow-sm" aria-hidden="true" />
+      <span className="absolute left-[99.8%] top-[56%] size-[0.95rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-blue-accent)] shadow-sm" aria-hidden="true" />
     </div>
   );
 
@@ -56,9 +56,9 @@ export function WhyChooseUs({ data: whyChoose }: { data?: WhyChooseData }) {
       />
       <div className={`${container} relative`}>
         <div data-reveal="up" className="text-center">
-          <SectionLabel text={whyChoose.label} variant="dot-lines" />
-          <h2 className="mt-4 font-heading text-[1.5rem] font-extrabold leading-[1.2] tracking-[-0.02em] text-navy min-[360px]:text-[1.75rem] min-[400px]:text-[1.95rem] sm:text-[2.5rem] xl:mt-[1.2rem] xl:text-[3.2rem] xl:leading-[1.03]">
-            <Heading text={whyChoose.title} highlight={whyChoose.titleHighlight} breakFrom="always" />
+          <SectionLabel text={whyChoose.label} variant="dots-lines" />
+          <h2 className="mx-auto mt-3 max-w-[46rem] font-heading text-[1.25rem] font-extrabold leading-[1.25] tracking-[-0.02em] text-navy min-[360px]:text-[1.35rem] min-[400px]:text-[1.5rem] sm:text-[2rem] xl:mt-[1.2rem] xl:text-[3.2rem] xl:leading-[1.03]">
+            <Heading text={whyChoose.title} highlight={whyChoose.titleHighlight} breakFrom="md" />
           </h2>
         </div>
 

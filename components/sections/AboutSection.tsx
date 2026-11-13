@@ -9,7 +9,7 @@ import type { AboutData } from "@/types/templates.types";
 export function AboutSection({ data: about }: { data?: AboutData }) {
   if (!about) return null;
   return (
-    <section className="section-spacing relative overflow-hidden bg-[var(--color-about-bg)]">
+    <section className="section-spacing !pt-12 sm:!pt-16 xl:!pt-20 relative overflow-hidden bg-[var(--color-about-bg)]">
       {/* soft diagonal light bands from the design */}
       <div
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_0%,transparent_38%,var(--color-glass-60)_38%,var(--color-glass-60)_56%,transparent_56%)]"
@@ -36,8 +36,8 @@ export function AboutSection({ data: about }: { data?: AboutData }) {
         {/* Text */}
         <div data-reveal="up" className="order-1 xl:order-2 xl:pt-[0.25rem]">
           <SectionLabel text={about.label} variant="line-left" />
-          <h2 className="mt-4 font-heading text-[1.5rem] font-extrabold leading-[1.2] tracking-[-0.02em] text-navy min-[360px]:text-[1.75rem] min-[400px]:text-[1.95rem] sm:text-[2.4rem] xl:mt-[0.75rem] xl:text-[3rem] xl:leading-[1.125]">
-            <Heading text={about.title} highlight={about.titleHighlight} breakFrom="always" />
+          <h2 className="mt-3 font-heading text-[1.25rem] font-extrabold leading-[1.25] tracking-[-0.02em] text-navy min-[360px]:text-[1.35rem] min-[400px]:text-[1.5rem] sm:text-[2rem] xl:mt-[0.75rem] xl:text-[3rem] xl:leading-[1.125]">
+            <Heading text={about.title} highlight={about.titleHighlight} breakFrom="md" />
           </h2>
           <p className="mt-4 max-w-[40.5rem] font-body text-[1.0625rem] leading-[1.45] text-body xl:mt-[0.75rem] xl:text-[1.16rem] xl:leading-[1.34]">
             {about.description}

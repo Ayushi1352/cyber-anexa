@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LuArrowRight } from "react-icons/lu";
-import { Heading } from "@/components/ui/Text";
+import { Heading, Lines } from "@/components/ui/Text";
 import { container } from "@/components/ui/classes";
 import { introHidden } from "@/components/ui/motion";
 import type { HeroData } from "@/types/templates.types";
@@ -14,12 +14,12 @@ export const HeroSection = ({ data }: { data?: HeroData }) => {
   if (!data) return null;
   return (
     <section className="section-spacing relative overflow-hidden bg-white">
-      <div className={`${container} relative z-10 flex flex-col py-8 md:min-h-[34rem] md:justify-center xl:min-h-[42.75rem]`}>
-        <div className="md:w-[50%] md:pr-4 xl:w-[45%] xl:pl-[2rem]">
+      <div className={`${container} relative z-10 flex flex-col py-6 md:min-h-[30rem] md:justify-center xl:min-h-[35rem] xl:py-8`}>
+        <div className="pt-3 sm:pt-4 md:pt-6 xl:pt-8 md:w-[54%] md:pr-4 xl:w-[52%] xl:pl-[2rem]">
           <h1
             data-intro="up"
             suppressHydrationWarning
-            className={`max-w-[40rem] font-heading text-[1.65rem] font-extrabold leading-[1.15] tracking-[-0.01em] text-navy min-[360px]:text-[1.85rem] min-[400px]:text-[2.1rem] sm:text-[3rem] sm:leading-[1.1] md:text-[2.4rem] lg:text-[3rem] xl:text-[3.69rem] xl:leading-[1.09] ${introHidden}`}
+            className={`max-w-[46rem] font-heading text-[1.35rem] font-extrabold leading-[1.18] tracking-[-0.01em] text-navy min-[360px]:text-[1.55rem] min-[400px]:text-[1.75rem] sm:text-[2.2rem] sm:leading-[1.16] md:text-[2.1rem] lg:text-[2.65rem] xl:text-[3rem] xl:leading-[1.14] 2xl:text-[3.25rem] sm:[&>span:last-child]:whitespace-nowrap [&>span]:mb-0.5 xl:[&>span]:mb-1 [&>span:last-child]:mb-0 ${introHidden}`}
           >
             <Heading text={data.title} highlight={data.titleHighlight} breakFrom="always" />
           </h1>
@@ -27,14 +27,14 @@ export const HeroSection = ({ data }: { data?: HeroData }) => {
             data-intro="up"
             data-intro-delay="150"
             suppressHydrationWarning
-            className={`mt-5 max-w-[34rem] font-body text-[1.0625rem] leading-[1.5] text-body sm:text-[1.125rem] xl:mt-[1.2rem] xl:max-w-[33.9rem] xl:text-[1.16rem] ${introHidden}`}
+            className={`mt-4 max-w-[38rem] font-body text-[1.0625rem] leading-[1.55] text-body sm:mt-5 sm:text-[1.125rem] xl:mt-[1.35rem] xl:max-w-[40rem] xl:text-[1.16rem] xl:leading-[1.58] ${introHidden}`}
           >
-            {data.description}
+            <Lines text={data.description} breakFrom="sm" />
           </p>
           <div data-intro="up" data-intro-delay="300" suppressHydrationWarning className={introHidden}>
             <Link
               href={data.buttonUrl}
-              className="group mt-8 inline-flex h-[3.15rem] items-center gap-[0.85rem] rounded-[0.375rem] border-2 border-primary bg-primary px-[1.9rem] font-heading text-[1.0625rem] font-semibold text-white shadow-sm transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-lg xl:mt-[2.15rem] xl:h-[3.8rem] xl:px-[2.3rem] xl:text-[1.06rem]"
+              className="group mt-7 inline-flex h-[3.15rem] items-center gap-[0.85rem] rounded-[0.375rem] border-2 border-primary bg-primary px-[1.9rem] font-heading text-[1.0625rem] font-semibold text-white shadow-sm transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-lg sm:mt-8 xl:mt-[2.4rem] xl:h-[3.8rem] xl:px-[2.3rem] xl:text-[1.06rem]"
             >
               {data.buttonText}
               <LuArrowRight className="size-[1.25rem] transition-transform group-hover:translate-x-1" strokeWidth={2.2} />
@@ -45,11 +45,11 @@ export const HeroSection = ({ data }: { data?: HeroData }) => {
 
       {/* Stack the hero image on phones and place it beside the text from tablet widths up. */}
       <div className="mt-4 pl-[8%] sm:pl-[20%] md:hidden">
-        <div className={`relative aspect-[1220/911] w-full ${blob}`}>
+        <div className={`relative aspect-[1220/850] max-h-[320px] w-full ${blob}`}>
           <Image src={data.image} alt={data.imageAlt} fill sizes="(min-width: 1280px) 1px, 92vw" priority className="object-cover object-right" />
         </div>
       </div>
-      <div className={`absolute right-0 top-0 hidden h-full w-[56%] md:block lg:w-[60%] xl:w-[63.55%] ${blob}`}>
+      <div className={`absolute right-0 top-0 bottom-0 hidden h-full w-[56%] md:block lg:w-[60%] xl:w-[63.55%] ${blob}`}>
         <Image src={data.image} alt={data.imageAlt} fill sizes="(min-width: 1280px) 64vw, 56vw" priority className="object-cover object-right" />
       </div>
     </section>

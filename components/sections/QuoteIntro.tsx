@@ -8,8 +8,8 @@ export function QuoteIntro({ data: content }: { data: QuoteData }) {
     <div>
       <div className="xl:pl-[1.5rem]">
         <SectionLabel text={content.label} variant="line-left" />
-        <h2 className="mt-4 font-heading text-[1.5rem] font-extrabold leading-[1.2] tracking-[-0.02em] text-navy min-[360px]:text-[1.75rem] min-[400px]:text-[1.95rem] sm:text-[2.6rem] xl:mt-[1.05rem] xl:text-[3.22rem] xl:leading-[1.12]">
-          <Heading text={content.title} highlight={content.titleHighlight} breakFrom="always" />
+        <h2 className="mt-3 font-heading text-[1.25rem] font-extrabold leading-[1.25] tracking-[-0.02em] text-navy min-[360px]:text-[1.35rem] min-[400px]:text-[1.5rem] sm:text-[2rem] xl:mt-[1.05rem] xl:text-[3.22rem] xl:leading-[1.12]">
+          <Heading text={content.title} highlight={content.titleHighlight} breakFrom="md" />
         </h2>
         <p className="mt-4 font-body text-[1.0625rem] leading-[1.58] text-body xl:mt-[0.85rem] xl:text-[1.08rem]">
           <Lines text={content.description} breakFrom="lg" />
