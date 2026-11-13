@@ -25,8 +25,8 @@ export function ServicesGrid({ data: content, ui }: { data?: ServicesGridData; u
       <div className="mx-auto w-full max-w-[90rem] px-5 md:px-8 xl:px-[3.9rem]">
         <div data-reveal="up" className="text-center">
           <SectionLabel text={content.label} variant="dots-lines" />
-          <h2 className="-mx-2 mt-3 font-heading text-[1rem] font-extrabold leading-[1.3] tracking-[-0.02em] text-navy min-[360px]:text-[1.0625rem] min-[400px]:text-[1.25rem] sm:mx-auto sm:text-[2rem] sm:leading-[1.25] xl:mt-[1.05rem] xl:text-[3rem] xl:leading-[1.125]">
-            <Heading text={content.title} highlight={content.titleHighlight} breakFrom="md" />
+          <h2 className="-mx-2 mt-3 font-heading text-[3.9vw] font-extrabold leading-[1.3] tracking-[-0.02em] text-navy sm:mx-auto sm:leading-[1.25] md:text-[2rem] xl:mt-[1.05rem] xl:text-[3rem] xl:leading-[1.125] [&>span]:whitespace-nowrap">
+            <Heading text={content.title} highlight={content.titleHighlight} breakFrom="always" />
           </h2>
         </div>
 
