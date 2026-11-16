@@ -1,24 +1,26 @@
-import type { Metadata } from "next";
-import rawData from "@/data/templates.json";
-import type { CyberSecurityTemplateData } from "@/types/templates.types";
-import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { AboutSection } from "@/components/sections/AboutSection";
-import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { TeamSection } from "@/components/sections/TeamSection";
+import type { Metadata } from 'next';
+import rawData from '@/data/templates.json';
+import type { CyberSecurityTemplateData } from '@/types/templates.types';
+import { Breadcrumb } from '@/components/common/Breadcrumb';
+import { AboutUs } from '@/components/sections/AboutUs';
+import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
+import { Team } from '@/components/sections/Team';
 
-const templateData: CyberSecurityTemplateData = rawData;
-const sectionData = templateData.categories.CyberSecurity.sections;
-const commonData = templateData.common;
-
-export const metadata: Metadata = commonData.aboutBreadcrumb.seo;
+export const metadata: Metadata = { ...(rawData as CyberSecurityTemplateData).common.aboutBreadcrumb?.seo };
 
 export default function AboutUsPage() {
+  const templateData: CyberSecurityTemplateData = rawData;
+  const sectionData = templateData?.categories?.CyberSecurity?.sections;
+  const commonData = templateData?.common;
+
+  if (!sectionData || !commonData) return null;
+
   return (
     <main className="flex-1">
       <Breadcrumb data={commonData.aboutBreadcrumb} ui={commonData.globalUI} />
-      <AboutSection data={sectionData.AboutUs?.variants?.CyberSecurityAboutUs1} />
+      <AboutUs data={sectionData.AboutUs?.variants?.CyberSecurityAboutUs1} />
       <WhyChooseUs data={sectionData.WhyChooseUs?.variants?.CyberSecurityWhyChooseUs1} />
-      <TeamSection data={sectionData.Team?.variants?.CyberSecurityTeam1} ui={commonData.globalUI} />
+      <Team data={sectionData.Team?.variants?.CyberSecurityTeam1} />
     </main>
   );
 }

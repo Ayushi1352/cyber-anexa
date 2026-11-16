@@ -1,12 +1,12 @@
-import Image from "next/image";
-import { ArrowButton } from "@/components/ui/ArrowButton";
-import { Heading } from "@/components/ui/Text";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { container } from "@/components/ui/classes";
-import type { AboutData } from "@/types/templates.types";
+import Image from 'next/image';
+import { ArrowButton } from '@/components/ui/ArrowButton';
+import { Heading } from '@/components/ui/Text';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { container } from '@/components/ui/classes';
+import type { AboutUsProps } from '@/types/templates.types';
 
 /** "About Our Company" block — used on Home and About Us. */
-export function AboutSection({ data: about }: { data?: AboutData }) {
+export function AboutUs({ data: about }: AboutUsProps) {
   if (!about) return null;
   return (
     <section className="py-[32px] !pt-12 sm:!pt-16 xl:!pt-20 relative overflow-hidden bg-[var(--color-about-bg)]">
@@ -50,11 +50,11 @@ export function AboutSection({ data: about }: { data?: AboutData }) {
                   <li
                     key={point}
                     className={`flex items-center gap-[1.7rem] py-[1.15rem] xl:py-[1.5rem] ${
-                      i < about.points.length - 1 ? "border-b border-[var(--color-about-divider)]" : ""
-                    } ${i === 0 ? "pt-0 xl:pt-[0.2rem]" : ""}`}
+                      i < about.points.length - 1 ? 'border-b border-[var(--color-about-divider)]' : ''
+                    } ${i === 0 ? 'pt-0 xl:pt-[0.2rem]' : ''}`}
                   >
                     <span className="w-[3rem] shrink-0 font-heading text-[2.25rem] font-bold leading-none text-[var(--color-about-number)] xl:w-[3.55rem] xl:text-[2.7rem]">
-                      {String(i + 1).padStart(2, "0")}
+                      {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className="font-heading text-[1.15rem] font-bold leading-snug tracking-[-0.01em] text-navy xl:text-[1.31rem]">
                       {point}
@@ -65,6 +65,7 @@ export function AboutSection({ data: about }: { data?: AboutData }) {
               <ArrowButton
                 href={about.buttonUrl}
                 label={about.buttonText}
+                icon={about.buttonIcon}
                 className="mt-6 h-[3.3rem] px-[2rem] text-[1rem] xl:mt-[1.2rem] xl:h-[3.47rem] xl:w-[14.05rem] xl:text-[0.97rem]"
                 iconClassName="size-[1.35rem]"
               />

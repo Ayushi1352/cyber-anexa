@@ -17,35 +17,8 @@
     },
     "globalUI": {
       "breadcrumbLabel": "Breadcrumb",
-      "openMenuLabel": "Open menu",
-      "closeMenuLabel": "Close menu",
-      "servicesMenuLabel": "Toggle services menu",
-      "previousLabel": "Previous",
-      "nextLabel": "Next",
-      "previousMemberLabel": "Previous member",
-      "nextMemberLabel": "Next member",
-      "goToSlideLabel": "Go to slide {n}",
-      "previousPageLabel": "Previous page",
-      "nextPageLabel": "Next page",
-      "goToPageLabel": "Go to page {n}",
-      "paginationLabel": "Blog pagination",
-      "showTestimonialLabel": "Show testimonial from {name}",
-      "ratingLabel": "Rated {rating} out of 5",
-      "readMore": "Read More",
-      "breadcrumbImage": "/images/common/banner-bg.webp"
-    },
-    "company": {
-      "name": "CyberAnexa",
-      "logo": {
-        "src": "/images/common/logo.webp",
-        "width": 1895,
-        "height": 413
-      },
-      "address": "350 Fifth Avenue,\nNew York, NY 10118, USA",
-      "phone": "+1 0000000000",
-      "phoneHref": "tel:+10000000000",
-      "email": "info@xyz.com",
-      "emailHref": "mailto:info@xyz.com"
+      "breadcrumbImage": "/images/common/banner-bg.webp",
+      "breadcrumbSeparatorIcon": "LuChevronRight"
     },
     "aboutBreadcrumb": {
       "title": "About Us",
@@ -61,8 +34,7 @@
         },
         {
           "id": "about-us",
-          "label": "About Us",
-          "url": ""
+          "label": "About Us"
         }
       ]
     },
@@ -80,8 +52,7 @@
         },
         {
           "id": "services",
-          "label": "Services",
-          "url": ""
+          "label": "Services"
         }
       ]
     },
@@ -99,8 +70,7 @@
         },
         {
           "id": "service-detail",
-          "label": "Service Detail",
-          "url": ""
+          "label": "Service Detail"
         }
       ]
     },
@@ -118,8 +88,7 @@
         },
         {
           "id": "projects",
-          "label": "Projects",
-          "url": ""
+          "label": "Projects"
         }
       ]
     },
@@ -137,8 +106,7 @@
         },
         {
           "id": "project-detail",
-          "label": "Project Detail",
-          "url": ""
+          "label": "Project Detail"
         }
       ]
     },
@@ -156,8 +124,7 @@
         },
         {
           "id": "blog",
-          "label": "Blog",
-          "url": ""
+          "label": "Blog"
         }
       ]
     },
@@ -175,8 +142,7 @@
         },
         {
           "id": "blog-detail",
-          "label": "Blog Detail",
-          "url": ""
+          "label": "Blog Detail"
         }
       ]
     },
@@ -194,8 +160,7 @@
         },
         {
           "id": "contact-us",
-          "label": "Contact Us",
-          "url": ""
+          "label": "Contact Us"
         }
       ]
     },
@@ -213,8 +178,7 @@
         },
         {
           "id": "get-a-quote",
-          "label": "Get a Quote",
-          "url": ""
+          "label": "Get a Quote"
         }
       ]
     },
@@ -232,13 +196,40 @@
         },
         {
           "id": "page-not-found",
-          "label": "Page Not Found",
-          "url": ""
+          "label": "Page Not Found"
         }
       ]
     },
     "Footer": {
+      "logo": "/images/common/logo.webp",
+      "logoAlt": "CyberAnexa",
+      "logoWidth": 1895,
+      "logoHeight": 413,
+      "logoUrl": "/",
+      "logoLabel": "CyberAnexa",
       "description": "We help businesses stay secure, resilient\nand ahead of evolving cyber threats with\ninnovative solutions and expert guidance.",
+      "contactItems": [
+        {
+          "id": "address",
+          "icon": "LuMapPin",
+          "text": "350 Fifth Avenue,\nNew York, NY 10118, USA",
+          "filled": false
+        },
+        {
+          "id": "phone",
+          "icon": "LuPhone",
+          "text": "+1 0000000000",
+          "url": "tel:+10000000000",
+          "filled": true
+        },
+        {
+          "id": "email",
+          "icon": "LuMail",
+          "text": "info@xyz.com",
+          "url": "mailto:info@xyz.com",
+          "filled": false
+        }
+      ],
       "quickLinks": {
         "title": "Quick Links",
         "links": [
@@ -319,11 +310,13 @@
           }
         ]
       },
+      "linkIcon": "LuChevronRight",
       "getInTouch": {
         "title": "Get In Touch",
         "text": "Have questions or need expert advice?\nWe’re here to help you strengthen\nyour security and protect your business.",
         "buttonText": "Contact Us",
-        "buttonUrl": "/contact-us"
+        "buttonUrl": "/contact-us",
+        "buttonIcon": "LuArrowRight"
       },
       "mapImage": "/images/common/footer-world-map.webp",
       "copyright": "© 2026 All Rights Reserved. Powered by Lestow."
@@ -335,6 +328,12 @@
         "Header": {
           "variants": {
             "CyberSecurityHeader1": {
+              "logo": "/images/common/logo.webp",
+              "logoAlt": "CyberAnexa",
+              "logoWidth": 1895,
+              "logoHeight": 413,
+              "logoUrl": "/",
+              "logoLabel": "CyberAnexa",
               "navLinks": [
                 {
                   "id": "home",
@@ -415,8 +414,15 @@
                   "url": "/services/service-details"
                 }
               ],
+              "submenuIcon": "LuChevronDown",
+              "submenuLabel": "Toggle services menu",
+              "openMenuLabel": "Open menu",
+              "closeMenuLabel": "Close menu",
+              "openMenuIcon": "LuMenu",
+              "closeMenuIcon": "LuX",
               "buttonText": "Get a Quote",
-              "buttonUrl": "/get-a-quote"
+              "buttonUrl": "/get-a-quote",
+              "buttonIcon": "LuArrowRight"
             }
           }
         },
@@ -428,6 +434,7 @@
               "description": "At CyberAnexa, we deliver innovative cybersecurity solutions\nto protect your data, systems, and business from evolving\ndigital threats.",
               "buttonText": "Get a Quote",
               "buttonUrl": "/get-a-quote",
+              "buttonIcon": "LuArrowRight",
               "image": "/images/home/hero-cyber-v3.webp",
               "imageAlt": "Cyber security analyst monitoring a protected network"
             }
@@ -447,6 +454,7 @@
               ],
               "buttonText": "More About Us",
               "buttonUrl": "/about-us",
+              "buttonIcon": "LuArrowRight",
               "mainImage": "/images/home/about-meeting.webp",
               "mainImageAlt": "Security consultant presenting a cyber security strategy",
               "secondImage": "/images/home/about-analysts.webp",
@@ -491,7 +499,8 @@
                 }
               ],
               "buttonText": "View All Services",
-              "buttonUrl": "/services"
+              "buttonUrl": "/services",
+              "buttonIcon": "LuArrowRight"
             }
           }
         },
@@ -573,7 +582,16 @@
                 }
               ],
               "buttonText": "View All Projects",
-              "buttonUrl": "/projects"
+              "buttonUrl": "/projects",
+              "buttonIcon": "LuArrowRight",
+              "pagination": {
+                "label": "Blog pagination",
+                "previousLabel": "Previous page",
+                "nextLabel": "Next page",
+                "pageLabel": "Go to page {n}",
+                "previousIcon": "LuChevronLeft",
+                "nextIcon": "LuChevronRight"
+              }
             }
           }
         },
@@ -617,7 +635,13 @@
                 }
               ],
               "buttonText": "See All Members",
-              "buttonUrl": "/about-us"
+              "buttonUrl": "/about-us",
+              "buttonIcon": "LuArrowRight",
+              "previousLabel": "Previous member",
+              "nextLabel": "Next member",
+              "goToSlideLabel": "Go to slide {n}",
+              "previousIcon": "LuChevronLeft",
+              "nextIcon": "LuChevronRight"
             }
           }
         },
@@ -666,7 +690,14 @@
                   "image": "/images/home/testimonial-client-5.webp",
                   "quote": "From the vulnerability assessment to the final compliance audit, the CyberAnexa team was professional, transparent and highly skilled. They made a complex process simple and helped us meet every industry requirement on time."
                 }
-              ]
+              ],
+              "ratingLabel": "Rated {rating} out of 5",
+              "starIcon": "LuStar",
+              "showTestimonialLabel": "Show testimonial from {name}",
+              "previousLabel": "Previous",
+              "nextLabel": "Next",
+              "previousIcon": "LuArrowLeft",
+              "nextIcon": "LuArrowRight"
             }
           }
         },
@@ -680,6 +711,7 @@
               "count": 4,
               "buttonText": "View All Blogs",
               "buttonUrl": "/blog",
+              "buttonIcon": "LuArrowRight",
               "posts": [
                 {
                   "id": "top-5-cyber-security-best-practices-for-businesses-in-2026",
@@ -969,7 +1001,13 @@
                   "image": "/images/blog/recent-4.webp",
                   "url": "/blog/blog-details"
                 }
-              ]
+              ],
+              "card": {
+                "readMore": "Read More",
+                "readMoreIcon": "LuArrowRight",
+                "categoryIcon": "LuFolderOpen",
+                "dateIcon": "LuCalendarDays"
+              }
             }
           }
         },
@@ -977,7 +1015,15 @@
           "variants": {
             "CyberSecurityBlogGrid1": {
               "postsPerPage": 8,
-              "totalPosts": 9
+              "totalPosts": 9,
+              "pagination": {
+                "label": "Blog pagination",
+                "previousLabel": "Previous page",
+                "nextLabel": "Next page",
+                "pageLabel": "Go to page {n}",
+                "previousIcon": "LuChevronLeft",
+                "nextIcon": "LuChevronRight"
+              }
             }
           }
         },
@@ -1061,7 +1107,16 @@
               ],
               "readMore": "Read More",
               "buttonText": "View All Services",
-              "buttonUrl": "/services"
+              "buttonUrl": "/services",
+              "readMoreIcon": "LuArrowRight",
+              "pagination": {
+                "label": "Blog pagination",
+                "previousLabel": "Previous page",
+                "nextLabel": "Next page",
+                "pageLabel": "Go to page {n}",
+                "previousIcon": "LuChevronLeft",
+                "nextIcon": "LuChevronRight"
+              }
             }
           }
         },
@@ -1074,6 +1129,7 @@
               "description": "We provide robust network security solutions to protect your business from unauthorized access, cyber threats, and data breaches, ensuring a secure and reliable IT infrastructure.",
               "buttonText": "Get a Quote",
               "buttonUrl": "/get-a-quote",
+              "buttonIcon": "LuArrowRight",
               "heroImage": "/images/services/detail-hero.webp",
               "overviewImage": "/images/services/detail-overview.webp",
               "imageAlt": "Network Security",
@@ -1158,6 +1214,7 @@
               ],
               "sideImage": "/images/projects/detail-side.webp",
               "challengesLabel": "Challenges",
+              "challengesIcon": "LuTarget",
               "challenges": [
                 "Increasing risk of data breaches",
                 "Unauthorized access to sensitive data",
@@ -1165,6 +1222,7 @@
                 "Need for 24/7 threat monitoring"
               ],
               "solutionsLabel": "Our Solutions",
+              "solutionsIcon": "LuLightbulb",
               "solutions": [
                 "Implemented advanced security protocols",
                 "Conducted system vulnerability assessment",
@@ -1183,17 +1241,21 @@
                 "title": "The Essentials of Cybersecurity Solutions",
                 "image": "/images/blog/detail-main.webp"
               },
+              "categoryIcon": "LuFolderOpen",
+              "dateIcon": "LuCalendarDays",
               "intro": "In today’s digital world, cybersecurity is more than just a technical requirement — it’s a business necessity. With the increasing number of cyber threats, organizations must implement robust security solutions to protect their data, systems, and digital assets from potential risks.",
               "quote": "“A strong cybersecurity strategy not only prevents threats but also ensures business continuity and builds customer trust in the digital era.”",
               "body": "Cybersecurity solutions help identify vulnerabilities, prevent unauthorized access, and ensure that sensitive information remains secure. From network security to endpoint protection, a well-planned security framework can significantly reduce the risk of cyber attacks and data breaches.",
               "images": [
                 {
-                  "src": "/images/blog/detail-shield.webp",
-                  "alt": "Shield protecting a laptop"
+                  "id": "image-1",
+                  "image": "/images/blog/detail-shield.webp",
+                  "imageAlt": "Shield protecting a laptop"
                 },
                 {
-                  "src": "/images/blog/detail-globe.webp",
-                  "alt": "Secure global network"
+                  "id": "image-2",
+                  "image": "/images/blog/detail-globe.webp",
+                  "imageAlt": "Secure global network"
                 }
               ],
               "sections": [
@@ -1242,7 +1304,8 @@
                 "text": "Get in touch with our team for personalized solutions to protect your business.",
                 "buttonText": "Contact Us",
                 "buttonUrl": "/contact-us",
-                "image": "/images/blog/cta-expert.webp"
+                "image": "/images/blog/cta-expert.webp",
+                "buttonIcon": "LuArrowRight"
               }
             }
           }
@@ -1272,7 +1335,9 @@
                   "placeholder": "Write your message here..."
                 },
                 "buttonText": "Send Message",
-                "success": "Thank you! Your message has been sent. Our team will get back to you shortly."
+                "success": "Thank you! Your message has been sent. Our team will get back to you shortly.",
+                "successIcon": "LuCircleCheck",
+                "buttonIcon": "LuArrowRight"
               },
               "details": {
                 "label": "Our Contact Details",
@@ -1280,16 +1345,19 @@
                 "image": "/images/contact/contact-card.webp",
                 "items": [
                   {
+                    "id": "address",
                     "icon": "LuMapPin",
                     "title": "Our Office",
                     "text": "350 Fifth Avenue,\nNew York, NY 10118, USA"
                   },
                   {
+                    "id": "phone",
                     "icon": "LuPhone",
                     "title": "Call Us",
                     "text": "+1 0000000000"
                   },
                   {
+                    "id": "email",
                     "icon": "LuMail",
                     "title": "Email Us",
                     "text": "info@xyz.com"
@@ -1397,7 +1465,10 @@
                   "Security Compliance",
                   "Data Protection & Backup",
                   "Cyber Security Consulting"
-                ]
+                ],
+                "selectIcon": "LuChevronDown",
+                "successIcon": "LuCircleCheck",
+                "buttonIcon": "LuArrowRight"
               }
             }
           }
@@ -1408,7 +1479,8 @@
               "code": "404",
               "text": "The page you are looking for doesn’t exist or has been moved.",
               "buttonText": "Back to Home",
-              "buttonUrl": "/"
+              "buttonUrl": "/",
+              "buttonIcon": "LuArrowRight"
             }
           }
         }
@@ -1416,7 +1488,7 @@
       "templateComponents": {
         "shared": {
           "Header": "CyberSecurityHeader1",
-          "Footer": "common.Footer"
+          "Footer": "CyberSecurityFooter1"
         },
         "pages": {
           "home": {
@@ -1426,40 +1498,40 @@
                 "component": "CyberSecurityHeader1"
               },
               {
-                "key": "Hero",
+                "key": "HeroSection",
                 "component": "CyberSecurityHero1"
               },
               {
                 "key": "AboutUs",
-                "component": "CyberSecurityAboutUs1"
+                "component": "AboutUs"
               },
               {
                 "key": "Services",
-                "component": "CyberSecurityServices1"
+                "component": "Services"
               },
               {
                 "key": "WhyChooseUs",
-                "component": "CyberSecurityWhyChooseUs1"
+                "component": "WhyChooseUs"
               },
               {
                 "key": "Projects",
-                "component": "CyberSecurityProjects1"
+                "component": "Projects"
               },
               {
                 "key": "Team",
-                "component": "CyberSecurityTeam1"
+                "component": "Team"
               },
               {
                 "key": "Testimonials",
-                "component": "CyberSecurityTestimonials1"
+                "component": "Testimonials"
               },
               {
                 "key": "Blogs",
-                "component": "CyberSecurityBlogs1"
+                "component": "Blogs"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1471,23 +1543,23 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.aboutBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "AboutUs",
-                "component": "CyberSecurityAboutUs1"
+                "component": "AboutUs"
               },
               {
                 "key": "WhyChooseUs",
-                "component": "CyberSecurityWhyChooseUs1"
+                "component": "WhyChooseUs"
               },
               {
                 "key": "Team",
-                "component": "CyberSecurityTeam1"
+                "component": "Team"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1499,15 +1571,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.servicesBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "ServicesGrid",
-                "component": "CyberSecurityServicesGrid1"
+                "component": "ServicesGrid"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1519,15 +1591,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.serviceDetailBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "ServiceDetail",
-                "component": "CyberSecurityServiceDetail1"
+                "component": "ServiceDetail"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1539,15 +1611,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.projectsBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "Projects",
-                "component": "CyberSecurityProjects1"
+                "component": "Projects"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1559,15 +1631,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.projectDetailBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "ProjectDetail",
-                "component": "CyberSecurityProjectDetail1"
+                "component": "ProjectDetail"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1579,19 +1651,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.blogBreadcrumb"
-              },
-              {
-                "key": "Blogs",
-                "component": "CyberSecurityBlogs1"
+                "component": "Breadcrumb"
               },
               {
                 "key": "BlogGrid",
-                "component": "CyberSecurityBlogGrid1"
+                "component": "BlogGrid"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1603,15 +1671,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.blogDetailBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "BlogDetail",
-                "component": "CyberSecurityBlogDetail1"
+                "component": "BlogDetail"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1623,15 +1691,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.quoteBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "Quote",
-                "component": "CyberSecurityQuote1"
+                "component": "Quote"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1643,15 +1711,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.contactBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "Contact",
-                "component": "CyberSecurityContact1"
+                "component": "Contact"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           },
@@ -1663,15 +1731,15 @@
               },
               {
                 "key": "Breadcrumb",
-                "component": "common.notFoundBreadcrumb"
+                "component": "Breadcrumb"
               },
               {
                 "key": "NotFound",
-                "component": "CyberSecurityNotFound1"
+                "component": "NotFound"
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "CyberSecurityFooter1"
               }
             ]
           }

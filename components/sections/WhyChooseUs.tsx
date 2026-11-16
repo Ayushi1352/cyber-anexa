@@ -1,12 +1,12 @@
-import Image from "next/image";
-import { Icon } from "@/components/ui/Icon";
-import { Heading, Lines } from "@/components/ui/Text";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { container } from "@/components/ui/classes";
-import type { WhyChooseData, WhyChooseItem } from "@/types/templates.types";
+import Image from 'next/image';
+import { Icon } from '@/components/ui/Icon';
+import { Heading, Lines } from '@/components/ui/Text';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { container } from '@/components/ui/classes';
+import type { WhyChooseItem, WhyChooseUsProps } from '@/types/templates.types';
 
 function FeatureCard({ item, index }: { item: WhyChooseItem; index: number }) {
-  const order = ["order-1", "order-2", "order-3", "order-4"][index];
+  const order = ['order-1', 'order-2', 'order-3', 'order-4'][index];
   return (
     <div data-reveal="up" className={`${order} lg:order-none rounded-[0.75rem] border border-[var(--color-card-border-soft)] bg-white/90 px-6 pb-8 pt-6 shadow-[0_0.8rem_2rem_-1.2rem_var(--color-shadow-blue-20)] xl:px-[1.73rem] xl:pb-[2.15rem] xl:pt-[1.85rem]`}>
       <div className="flex items-start justify-between">
@@ -14,7 +14,7 @@ function FeatureCard({ item, index }: { item: WhyChooseItem; index: number }) {
           <Icon name={item.icon} className="size-[1.9rem] text-primary xl:size-[2.4rem]" strokeWidth={2} />
         </span>
         <span className="pt-[0.2rem] font-heading text-[2.4rem] font-bold leading-none text-[var(--color-why-number)] xl:text-[2.6rem]">
-          {String(index + 1).padStart(2, "0")}
+          {String(index + 1).padStart(2, '0')}
         </span>
       </div>
       <h3 className="mt-5 font-heading text-[1.4rem] font-bold leading-tight tracking-[-0.035em] text-navy xl:mt-[1.15rem] xl:text-[1.6rem]">
@@ -28,7 +28,7 @@ function FeatureCard({ item, index }: { item: WhyChooseItem; index: number }) {
 }
 
 /** "Why Choose Us" — used on Home and About Us. */
-export function WhyChooseUs({ data: whyChoose }: { data?: WhyChooseData }) {
+export function WhyChooseUs({ data: whyChoose }: WhyChooseUsProps) {
   if (!whyChoose) return null;
   const [a, b, c, d] = whyChoose.items;
 

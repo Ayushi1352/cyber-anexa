@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Pagination } from "@/components/ui/Pagination";
-import { Heading } from "@/components/ui/Text";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { ServiceCard } from "@/components/sections/ServiceCard";
-import type { GlobalUIData, ServicesGridData } from "@/types/templates.types";
+import { useState } from 'react';
+import { Pagination } from '@/components/ui/Pagination';
+import { Heading } from '@/components/ui/Text';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { ServiceCard } from '@/components/ui/ServiceCard';
+import type { ServicesGridProps } from '@/types/templates.types';
 
-export function ServicesGrid({ data: content, ui }: { data?: ServicesGridData; ui?: GlobalUIData }) {
+export function ServicesGrid({ data: content }: ServicesGridProps) {
   const [page, setPage] = useState(1);
   if (!content) return null;
   const perPage = 9;
@@ -15,7 +15,7 @@ export function ServicesGrid({ data: content, ui }: { data?: ServicesGridData; u
   const services = content.items.slice((page - 1) * perPage, page * perPage);
   const goTo = (nextPage: number) => {
     setPage(Math.min(totalPages, Math.max(1, nextPage)));
-    document.getElementById("services-list")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById('services-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
@@ -31,7 +31,7 @@ export function ServicesGrid({ data: content, ui }: { data?: ServicesGridData; u
         <div id="services-list" className="scroll-mt-28">
           <div data-reveal-stagger className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:mt-[2.6rem] xl:gap-x-[1.03rem] xl:gap-y-[1.45rem]">
             {services.map((service) => (
-              <ServiceCard key={service.id} service={service} readMore={content.readMore} />
+              <ServiceCard key={service.id} service={service} readMore={content.readMore} readMoreIcon={content.readMoreIcon} />
             ))}
           </div>
         </div>
@@ -40,10 +40,7 @@ export function ServicesGrid({ data: content, ui }: { data?: ServicesGridData; u
           page={page}
           totalPages={totalPages}
           onChange={goTo}
-          label={ui?.paginationLabel}
-          previousLabel={ui?.previousPageLabel}
-          nextLabel={ui?.nextPageLabel}
-          pageLabel={ui?.goToPageLabel}
+          data={content.pagination}
           hover="outline"
         />
       </div>

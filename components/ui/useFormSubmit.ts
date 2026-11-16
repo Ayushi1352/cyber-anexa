@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 
 /**
  * Dummy form submission used by the contact and quote forms: resets the form, shows the

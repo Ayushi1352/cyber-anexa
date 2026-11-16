@@ -1,5 +1,5 @@
-import type { IconBaseProps, IconType } from "react-icons";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaQuoteLeft, FaYoutube } from "react-icons/fa";
+import type { IconBaseProps, IconType } from 'react-icons';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaQuoteLeft, FaYoutube } from 'react-icons/fa';
 import {
   LuActivity,
   LuArrowLeft,
@@ -51,7 +51,7 @@ import {
   LuUsers,
   LuWorkflow,
   LuX,
-} from "react-icons/lu";
+} from 'react-icons/lu';
 
 /** Monitor with a rising chart (used for "Network Monitoring"). */
 const MonitorChart: IconType = (props) => (
@@ -123,7 +123,7 @@ const icons: Record<string, IconType> = {
 export const Icon = ({ name, ...props }: IconBaseProps & { name: string }) => {
   const Cmp = icons[name];
   if (!Cmp) {
-    if (process.env.NODE_ENV !== "production") console.warn(`Icon "${name}" is not in components/ui/Icon.tsx`);
+    if (process.env.NODE_ENV !== 'production') console.warn(`Icon "${name}" is not in components/ui/Icon.tsx`);
     return <LuShield aria-hidden="true" {...props} />;
   }
   return <Cmp aria-hidden="true" {...props} />;

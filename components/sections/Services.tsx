@@ -1,12 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowButton } from "@/components/ui/ArrowButton";
-import { Heading, Lines } from "@/components/ui/Text";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { container } from "@/components/ui/classes";
-import type { ServicesData } from "@/types/templates.types";
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowButton } from '@/components/ui/ArrowButton';
+import { Heading, Lines } from '@/components/ui/Text';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { container } from '@/components/ui/classes';
+import type { ServicesProps } from '@/types/templates.types';
 
-export function ServicesSection({ data: services }: { data?: ServicesData }) {
+export function Services({ data: services }: ServicesProps) {
   if (!services) return null;
   return (
     <section className="py-[32px] relative overflow-hidden bg-[linear-gradient(180deg,var(--color-services-top)_0%,var(--color-services-bottom)_100%)]">
@@ -36,7 +36,7 @@ export function ServicesSection({ data: services }: { data?: ServicesData }) {
               </div>
               <div className="xl:pt-[0.55rem]">
                 <span className="block font-heading text-[1.75rem] font-bold leading-none text-[var(--color-service-number)] xl:text-[1.94rem]">
-                  {String(i + 1).padStart(2, "0")}
+                  {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="mt-4 whitespace-nowrap font-heading text-[clamp(1rem,5vw,1.3rem)] font-bold leading-tight tracking-[-0.01em] text-navy transition-colors group-hover:text-primary xl:mt-[1.3rem] xl:text-[1.44rem]">
                   {item.title}
@@ -53,6 +53,7 @@ export function ServicesSection({ data: services }: { data?: ServicesData }) {
           <ArrowButton
             href={services.buttonUrl}
             label={services.buttonText}
+            icon={services.buttonIcon}
             className="h-[3.4rem] px-[2.2rem] text-[1.0625rem] xl:h-[3.9rem] xl:w-[15.95rem] xl:text-[1.09rem]"
             iconClassName="size-[1.3rem]"
           />

@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Icon } from "@/components/ui/Icon";
-import { Lines } from "@/components/ui/Text";
-import type { CompanyData, FooterData, LinkItem } from "@/types/templates.types";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Icon } from '@/components/ui/Icon';
+import { Lines } from '@/components/ui/Text';
+import type { FooterProps, LinkItem } from '@/types/templates.types';
 
 const ColumnTitle = ({ children }: { children: React.ReactNode }) => (
   <div className="mb-[1.1rem] sm:mb-[1.6rem] xl:mb-[2.1rem]">
@@ -11,7 +11,7 @@ const ColumnTitle = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-const LinkList = ({ links, spacing }: { links: LinkItem[]; spacing: string }) => (
+const LinkList = ({ links, icon, spacing }: { links: LinkItem[]; icon: string; spacing: string }) => (
   <ul className={`flex flex-col ${spacing}`}>
     {links.map((link) => (
       <li key={link.id}>
@@ -19,7 +19,7 @@ const LinkList = ({ links, spacing }: { links: LinkItem[]; spacing: string }) =>
           href={link.url}
           className="group inline-flex items-start gap-[0.55rem] font-footer text-[0.875rem] font-normal leading-snug text-footer transition-colors hover:text-primary sm:items-center sm:gap-[1.1rem] sm:text-[1.0625rem] xl:text-[1.15rem]"
         >
-          <Icon name="LuChevronRight" className="mt-[0.18rem] size-[0.82rem] shrink-0 text-primary transition-transform group-hover:translate-x-0.5 sm:mt-0 sm:size-[1rem]" strokeWidth={2.4} />
+          <Icon name={icon} className="mt-[0.18rem] size-[0.82rem] shrink-0 text-primary transition-transform group-hover:translate-x-0.5 sm:mt-0 sm:size-[1rem]" strokeWidth={2.4} />
           <span>{link.label}</span>
         </Link>
       </li>
@@ -27,13 +27,8 @@ const LinkList = ({ links, spacing }: { links: LinkItem[]; spacing: string }) =>
   </ul>
 );
 
-export const Footer = ({ data, company }: { data?: FooterData; company: CompanyData }) => {
+export const Footer = ({ data }: FooterProps) => {
   if (!data) return null;
-  const contactRows = [
-    { icon: "LuMapPin", content: company.address.split("\n"), href: undefined, filled: false },
-    { icon: "LuPhone", content: [company.phone], href: company.phoneHref, filled: true },
-    { icon: "LuMail", content: [company.email], href: company.emailHref, filled: false },
-  ];
 
   return (
     <footer className="relative overflow-hidden">
@@ -60,12 +55,12 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
         <div data-reveal-stagger className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-2 sm:gap-10 lg:grid-cols-[557fr_334fr_409fr_490fr] lg:gap-0">
           {/* Brand + contact */}
           <div className="col-span-2 sm:col-span-1 lg:pr-8">
-            <Link href="/" aria-label={company.name}>
+            <Link href={data.logoUrl} aria-label={data.logoLabel}>
               <Image
-                src={company.logo.src}
-                alt={company.name}
-                width={company.logo.width}
-                height={company.logo.height}
+                src={data.logo}
+                alt={data.logoAlt}
+                width={data.logoWidth}
+                height={data.logoHeight}
                 loading="eager"
                 className="h-auto w-[11rem] sm:w-[12.5rem] xl:w-[15rem]"
               />
@@ -74,7 +69,8 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
               <Lines text={data.description} breakFrom="lg" />
             </p>
             <ul className="mt-5 flex flex-col gap-4 sm:gap-5 xl:mt-6 xl:gap-[1.25rem]">
-              {contactRows.map(({ icon, content, href, filled }) => {
+              {data.contactItems.map(({ id, icon, text: value, url, filled }) => {
+                const content = value.split('\n');
                 const text = (
                   <span className="font-footer text-[1.0625rem] leading-[1.3] text-footer xl:text-[1.125rem]">
                     {content.map((line) => (
@@ -85,13 +81,13 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
                   </span>
                 );
                 return (
-                  <li key={content[0]} className="flex items-start gap-[1.4rem]">
+                  <li key={id} className="flex items-start gap-[1.4rem]">
                     <span className="flex size-[3.2rem] shrink-0 items-center justify-center rounded-full bg-[var(--color-footer-icon-bg)]">
-                      <Icon name={icon} className="size-[1.25rem] text-primary" fill={filled ? "currentColor" : "none"} strokeWidth={filled ? 0 : 2.4} />
+                      <Icon name={icon} className="size-[1.25rem] text-primary" fill={filled ? 'currentColor' : 'none'} strokeWidth={filled ? 0 : 2.4} />
                     </span>
-                    <span className={content.length > 1 ? "pt-[0.05rem]" : "self-center"}>
-                      {href ? (
-                        <a href={href} className="transition-colors hover:text-primary">
+                    <span className={content.length > 1 ? 'pt-[0.05rem]' : 'self-center'}>
+                      {url ? (
+                        <a href={url} className="transition-colors hover:text-primary">
                           {text}
                         </a>
                       ) : (
@@ -107,13 +103,13 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
           {/* Quick links */}
           <div className="col-span-1 lg:border-l lg:border-[var(--color-footer-divider)] lg:pl-[2.85rem]">
             <ColumnTitle>{data.quickLinks.title}</ColumnTitle>
-            <LinkList links={data.quickLinks.links} spacing="gap-[0.75rem] sm:gap-[1rem] xl:gap-[0.62rem]" />
+            <LinkList links={data.quickLinks.links} icon={data.linkIcon} spacing="gap-[0.75rem] sm:gap-[1rem] xl:gap-[0.62rem]" />
           </div>
 
           {/* Services */}
           <div className="col-span-1 lg:border-l lg:border-[var(--color-footer-divider)] lg:pl-[2.85rem]">
             <ColumnTitle>{data.services.title}</ColumnTitle>
-            <LinkList links={data.services.links} spacing="gap-[0.75rem] sm:gap-[1rem] xl:gap-[0.62rem]" />
+            <LinkList links={data.services.links} icon={data.linkIcon} spacing="gap-[0.75rem] sm:gap-[1rem] xl:gap-[0.62rem]" />
           </div>
 
           {/* Get in touch */}
@@ -127,7 +123,7 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
               className="group mt-[1.6rem] inline-flex h-[3.05rem] items-center gap-[1rem] rounded-[0.5rem] border-2 border-primary bg-primary px-[1.8rem] font-footer text-[1.125rem] font-medium text-white shadow-sm transition-all duration-300 hover:border-primary hover:bg-white hover:text-primary hover:shadow-lg"
             >
               {data.getInTouch.buttonText}
-              <Icon name="LuArrowRight" className="size-[1.2rem] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+              <Icon name={data.getInTouch.buttonIcon} className="size-[1.2rem] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
             </Link>
           </div>
         </div>

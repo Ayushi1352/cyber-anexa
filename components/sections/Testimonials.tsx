@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import { Icon } from "@/components/ui/Icon";
-import { Heading, fill } from "@/components/ui/Text";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { container } from "@/components/ui/classes";
-import type { GlobalUIData, TestimonialsData } from "@/types/templates.types";
+import { useState } from 'react';
+import Image from 'next/image';
+import { Icon } from '@/components/ui/Icon';
+import { Heading, fill } from '@/components/ui/Text';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { container } from '@/components/ui/classes';
+import type { TestimonialsProps } from '@/types/templates.types';
 
-export function TestimonialsSection({ data: content, ui }: { data?: TestimonialsData; ui?: GlobalUIData }) {
+export function Testimonials({ data: content }: TestimonialsProps) {
   const [active, setActive] = useState(0);
   if (!content) return null;
   const items = content.items;
@@ -29,9 +29,9 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
 
             <div className="mt-8 flex items-center gap-[1rem] xl:mt-[1.7rem]">
               <span className="font-heading text-[1.25rem] font-semibold leading-none text-navy">{content.rating}</span>
-              <span className="flex gap-[0.45rem]" aria-label={fill(ui?.ratingLabel ?? "", { rating: content.rating })}>
+              <span className="flex gap-[0.45rem]" aria-label={fill(content.ratingLabel, { rating: content.rating })}>
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Icon name="LuStar" key={i} className="size-[1.45rem] fill-[var(--color-star)] text-[var(--color-star)]" strokeWidth={1} />
+                  <Icon name={content.starIcon} key={i} className="size-[1.45rem] fill-[var(--color-star)] text-[var(--color-star)]" strokeWidth={1} />
                 ))}
               </span>
             </div>
@@ -69,17 +69,17 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
                 type="button"
                 onClick={() => go(-1)}
                 className="flex size-[3.56rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:bg-primary active:text-white active:scale-95"
-                aria-label={ui?.previousLabel}
+                aria-label={content.previousLabel}
               >
-                <Icon name="LuArrowLeft" className="size-[1.35rem]" strokeWidth={2.2} />
+                <Icon name={content.previousIcon} className="size-[1.35rem]" strokeWidth={2.2} />
               </button>
               <button
                 type="button"
                 onClick={() => go(1)}
                 className="flex size-[3.56rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:bg-primary active:text-white active:scale-95"
-                aria-label={ui?.nextLabel}
+                aria-label={content.nextLabel}
               >
-                <Icon name="LuArrowRight" className="size-[1.35rem]" strokeWidth={2.2} />
+                <Icon name={content.nextIcon} className="size-[1.35rem]" strokeWidth={2.2} />
               </button>
             </div>
           </div>
@@ -94,10 +94,10 @@ export function TestimonialsSection({ data: content, ui }: { data?: Testimonials
                   onClick={() => setActive(i)}
                   className={`relative size-[2.85rem] shrink-0 overflow-hidden rounded-full transition-all min-[360px]:size-[3.15rem] min-[420px]:size-[3.5rem] sm:size-[5.5rem] ${
                     i === active
-                      ? "ring-2 ring-primary ring-offset-2 ring-offset-[var(--color-section-tint)] sm:ring-[0.19rem] sm:ring-[var(--color-blue-accent)] sm:ring-offset-[0.22rem]"
-                      : "opacity-90 hover:opacity-100"
+                      ? 'ring-2 ring-primary ring-offset-2 ring-offset-[var(--color-section-tint)] sm:ring-[0.19rem] sm:ring-[var(--color-blue-accent)] sm:ring-offset-[0.22rem]'
+                      : 'opacity-90 hover:opacity-100'
                   }`}
-                  aria-label={fill(ui?.showTestimonialLabel ?? "", { name: item.name })}
+                  aria-label={fill(content.showTestimonialLabel, { name: item.name })}
                   aria-pressed={i === active}
                 >
                   <Image src={item.avatar} alt={item.name} fill sizes="88px" className="object-cover" />

@@ -1,14 +1,13 @@
-"use client";
+'use client';
 
-import { useEffect, useState, useRef, useCallback } from "react";
-import Image from "next/image";
-import { Icon } from "@/components/ui/Icon";
-import { ArrowButton } from "@/components/ui/ArrowButton";
-import { Heading, Lines } from "@/components/ui/Text";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { container } from "@/components/ui/classes";
-import { fill } from "@/components/ui/Text";
-import type { GlobalUIData, TeamData, TeamMember } from "@/types/templates.types";
+import { useEffect, useState, useRef, useCallback } from 'react';
+import Image from 'next/image';
+import { Icon } from '@/components/ui/Icon';
+import { ArrowButton } from '@/components/ui/ArrowButton';
+import { Heading, Lines, fill } from '@/components/ui/Text';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { container } from '@/components/ui/classes';
+import type { TeamMember, TeamProps } from '@/types/templates.types';
 
 function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
@@ -39,15 +38,10 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 }
 
 /** "Meet Our Team" section with auto-slider — used on Home and About Us. */
-export function TeamSection({
+export function Team({
   data: content,
-  ui,
   showButton = true,
-}: {
-  data?: TeamData;
-  ui?: GlobalUIData;
-  showButton?: boolean;
-}) {
+}: TeamProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [visibleCount, setVisibleCount] = useState(4);
@@ -69,8 +63,8 @@ export function TeamSection({
       }
     };
     updateVisible();
-    window.addEventListener("resize", updateVisible);
-    return () => window.removeEventListener("resize", updateVisible);
+    window.addEventListener('resize', updateVisible);
+    return () => window.removeEventListener('resize', updateVisible);
   }, []);
 
   const maxIndex = Math.max(0, members.length - visibleCount);
@@ -171,9 +165,9 @@ export function TeamSection({
                   type="button"
                   onClick={goPrev}
                   className="flex size-[2.6rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary shadow-sm transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:scale-95"
-                  aria-label={ui?.previousMemberLabel}
+                  aria-label={content.previousLabel}
                 >
-                  <Icon name="LuChevronLeft" className="size-[1.2rem]" strokeWidth={2.4} />
+                  <Icon name={content.previousIcon} className="size-[1.2rem]" strokeWidth={2.4} />
                 </button>
 
                 {/* Indicator Dots */}
@@ -185,11 +179,11 @@ export function TeamSection({
                       onClick={() => setCurrentIndex(idx)}
                       className={`h-[0.5rem] rounded-full transition-all duration-300 ${
                         idx === index
-                          ? "w-[1.8rem] bg-primary shadow-sm"
-                          : "w-[0.5rem] bg-[var(--color-slider-border)] hover:bg-primary/50"
+                          ? 'w-[1.8rem] bg-primary shadow-sm'
+                          : 'w-[0.5rem] bg-[var(--color-slider-border)] hover:bg-primary/50'
                       }`}
-                      aria-label={ui ? fill(ui.goToSlideLabel, { n: idx + 1 }) : undefined}
-                      aria-current={idx === index ? "true" : undefined}
+                      aria-label={fill(content.goToSlideLabel, { n: idx + 1 })}
+                      aria-current={idx === index ? 'true' : undefined}
                     />
                   ))}
                 </div>
@@ -198,9 +192,9 @@ export function TeamSection({
                   type="button"
                   onClick={goNext}
                   className="flex size-[2.6rem] items-center justify-center rounded-full border-2 border-primary bg-white text-primary shadow-sm transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md active:scale-95"
-                  aria-label={ui?.nextMemberLabel}
+                  aria-label={content.nextLabel}
                 >
-                  <Icon name="LuChevronRight" className="size-[1.2rem]" strokeWidth={2.4} />
+                  <Icon name={content.nextIcon} className="size-[1.2rem]" strokeWidth={2.4} />
                 </button>
               </div>
             )}
@@ -212,6 +206,7 @@ export function TeamSection({
               <ArrowButton
                 href={content.buttonUrl}
                 label={content.buttonText}
+                icon={content.buttonIcon}
                 className="h-[3.4rem] px-[2.3rem] text-[1.0625rem] xl:h-[3.75rem] xl:w-[17.35rem] xl:text-[1.13rem]"
                 iconClassName="size-[1.4rem]"
               />

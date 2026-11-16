@@ -1,10 +1,10 @@
-import { ArrowButton } from "@/components/ui/ArrowButton";
-import { Heading, Lines } from "@/components/ui/Text";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { BlogCard } from "@/components/sections/BlogCard";
-import type { BlogsData, GlobalUIData } from "@/types/templates.types";
+import { ArrowButton } from '@/components/ui/ArrowButton';
+import { Heading, Lines } from '@/components/ui/Text';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { BlogCard } from '@/components/ui/BlogCard';
+import type { BlogsProps } from '@/types/templates.types';
 
-export function BlogSection({ data: content, ui }: { data?: BlogsData; ui?: GlobalUIData }) {
+export function Blogs({ data: content }: BlogsProps) {
   if (!content) return null;
   return (
     <section className="py-[32px] bg-[linear-gradient(180deg,var(--color-section-tint)_0%,var(--color-light)_100%)]">
@@ -21,7 +21,7 @@ export function BlogSection({ data: content, ui }: { data?: BlogsData; ui?: Glob
 
         <div data-reveal-stagger className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:mt-[1.6rem] xl:gap-x-[0.94rem] xl:gap-y-[1.03rem]">
           {content.posts.slice(0, content.count).map((post) => (
-            <BlogCard key={post.id} post={post} readMore={ui?.readMore} />
+            <BlogCard key={post.id} post={post} card={content.card} />
           ))}
         </div>
 
@@ -29,6 +29,7 @@ export function BlogSection({ data: content, ui }: { data?: BlogsData; ui?: Glob
           <ArrowButton
             href={content.buttonUrl}
             label={content.buttonText}
+            icon={content.buttonIcon}
             className="h-[3.05rem] px-[2rem] text-[1rem] xl:w-[12.8rem]"
             iconClassName="size-[1.15rem]"
           />

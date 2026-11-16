@@ -1,9 +1,10 @@
+import type { CSSProperties } from 'react';
+
 // Types for data/templates.json. Keep them in step when the JSON changes.
 
 /*
   Text conventions (same as the other sites):
-  - "
-" in a string is a line break (only on desktop, where the design breaks the line).
+  - "\n" in a string is a line break (only on desktop, where the design breaks the line).
   - A heading is `title` + `titleHighlight`: the part of the title shown in blue.
   - Links are { id, label, url }; buttons are `buttonText` + `buttonUrl`.
 */
@@ -24,11 +25,23 @@ export interface ButtonData {
   buttonUrl: string;
 }
 
-/** Page banner: the title and the trail (the last path is the current page, with an empty url). */
+/** One step of the breadcrumb trail; the last step is the current page (no url). */
+export interface BreadcrumbPath {
+  id: string;
+  label: string;
+  url?: string;
+}
+
+/** Page banner: the title and the trail. */
 export interface BreadcrumbData {
   title: string;
   seo: SeoData;
-  paths: LinkItem[];
+  paths: BreadcrumbPath[];
+}
+
+export interface BreadcrumbProps {
+  data?: BreadcrumbData;
+  ui?: GlobalUIData;
 }
 
 export interface ThemeFonts {
@@ -38,6 +51,14 @@ export interface ThemeFonts {
   footer: string;
 }
 
+/** CSS variables layout.tsx sets on <html> from common.theme.fonts. */
+export type ThemeFontVariables = CSSProperties & {
+  '--font-heading': string;
+  '--font-body': string;
+  '--font-banner': string;
+  '--font-footer': string;
+};
+
 export interface SiteMetadataData {
   title: string;
   description: string;
@@ -46,42 +67,31 @@ export interface SiteMetadataData {
   icon: string;
 }
 
+/** Only the breadcrumb reads these; every section keeps its own labels and icons in its data. */
 export interface GlobalUIData {
   breadcrumbLabel: string;
   breadcrumbImage: string;
-  openMenuLabel: string;
-  closeMenuLabel: string;
-  servicesMenuLabel: string;
+  breadcrumbSeparatorIcon: string;
+}
+
+/** Logo of the header and the footer. */
+export interface LogoData {
+  logo: string;
+  logoAlt: string;
+  logoWidth: number;
+  logoHeight: number;
+  logoUrl: string;
+  logoLabel: string;
+}
+
+/** Screen-reader labels and arrow icons of the page numbers under a grid; "{n}" in pageLabel is the page number. */
+export interface PaginationData {
+  label: string;
   previousLabel: string;
   nextLabel: string;
-  previousMemberLabel: string;
-  nextMemberLabel: string;
-  /** "{n}" is the slide number */
-  goToSlideLabel: string;
-  previousPageLabel: string;
-  nextPageLabel: string;
-  /** "{n}" is the page number */
-  goToPageLabel: string;
-  paginationLabel: string;
-  showTestimonialLabel: string;
-  ratingLabel: string;
-  readMore: string;
-}
-
-export interface ImageData {
-  src: string;
-  width: number;
-  height: number;
-}
-
-export interface CompanyData {
-  name: string;
-  logo: ImageData;
-  address: string;
-  phone: string;
-  phoneHref: string;
-  email: string;
-  emailHref: string;
+  pageLabel: string;
+  previousIcon: string;
+  nextIcon: string;
 }
 
 export interface LinkGroup {
@@ -89,20 +99,34 @@ export interface LinkGroup {
   links: LinkItem[];
 }
 
-export interface FooterData {
+export interface FooterContactItem {
+  id: string;
+  icon: string;
+  /** Solid icon instead of an outline one. */
+  filled: boolean;
+  text: string;
+  url?: string;
+}
+
+export interface FooterData extends LogoData {
   description: string;
+  contactItems: FooterContactItem[];
   quickLinks: LinkGroup;
   services: LinkGroup;
-  getInTouch: ButtonData & { title: string; text: string };
+  linkIcon: string;
+  getInTouch: ButtonData & { title: string; text: string; buttonIcon: string };
   mapImage: string;
   copyright: string;
+}
+
+export interface FooterProps {
+  data?: FooterData;
 }
 
 export interface CommonData {
   theme: { fonts: ThemeFonts };
   metadata: SiteMetadataData;
   globalUI: GlobalUIData;
-  company: CompanyData;
   aboutBreadcrumb: BreadcrumbData;
   servicesBreadcrumb: BreadcrumbData;
   serviceDetailBreadcrumb: BreadcrumbData;
@@ -122,9 +146,20 @@ export interface NavLink extends LinkItem {
   dropdown?: boolean;
 }
 
-export interface HeaderData extends ButtonData {
+export interface HeaderData extends LogoData, ButtonData {
   navLinks: NavLink[];
   dropdownLinks: LinkItem[];
+  submenuIcon: string;
+  submenuLabel: string;
+  openMenuLabel: string;
+  closeMenuLabel: string;
+  openMenuIcon: string;
+  closeMenuIcon: string;
+  buttonIcon: string;
+}
+
+export interface HeaderProps {
+  data?: HeaderData;
 }
 
 export interface HeroData {
@@ -133,8 +168,13 @@ export interface HeroData {
   description: string;
   buttonText: string;
   buttonUrl: string;
+  buttonIcon: string;
   image: string;
   imageAlt: string;
+}
+
+export interface HeroSectionProps {
+  data?: HeroData;
 }
 
 export interface AboutData {
@@ -145,10 +185,15 @@ export interface AboutData {
   points: string[];
   buttonText: string;
   buttonUrl: string;
+  buttonIcon: string;
   mainImage: string;
   mainImageAlt: string;
   secondImage: string;
   secondImageAlt: string;
+}
+
+export interface AboutUsProps {
+  data?: AboutData;
 }
 
 export interface ServiceItem {
@@ -166,6 +211,11 @@ export interface ServicesData {
   items: ServiceItem[];
   buttonText: string;
   buttonUrl: string;
+  buttonIcon: string;
+}
+
+export interface ServicesProps {
+  data?: ServicesData;
 }
 
 export interface WhyChooseItem {
@@ -181,6 +231,10 @@ export interface WhyChooseData {
   image: string;
   imageAlt: string;
   items: WhyChooseItem[];
+}
+
+export interface WhyChooseUsProps {
+  data?: WhyChooseData;
 }
 
 export interface ProjectItem {
@@ -199,6 +253,14 @@ export interface ProjectsData {
   items: ProjectItem[];
   buttonText: string;
   buttonUrl: string;
+  buttonIcon: string;
+  pagination: PaginationData;
+}
+
+export interface ProjectsProps {
+  data?: ProjectsData;
+  /** Projects page: every project, with page numbers (Home shows the first four and a button). */
+  paginated?: boolean;
 }
 
 export interface TeamMember {
@@ -215,6 +277,18 @@ export interface TeamData {
   members: TeamMember[];
   buttonText: string;
   buttonUrl: string;
+  buttonIcon: string;
+  previousLabel: string;
+  nextLabel: string;
+  /** "{n}" is the slide number */
+  goToSlideLabel: string;
+  previousIcon: string;
+  nextIcon: string;
+}
+
+export interface TeamProps {
+  data?: TeamData;
+  showButton?: boolean;
 }
 
 export interface TestimonialItem {
@@ -233,6 +307,19 @@ export interface TestimonialsData {
   image: string;
   imageAlt: string;
   items: TestimonialItem[];
+  /** "{rating}" is the rating */
+  ratingLabel: string;
+  starIcon: string;
+  /** "{name}" is the client's name */
+  showTestimonialLabel: string;
+  previousLabel: string;
+  nextLabel: string;
+  previousIcon: string;
+  nextIcon: string;
+}
+
+export interface TestimonialsProps {
+  data?: TestimonialsData;
 }
 
 export interface BlogPost {
@@ -245,6 +332,20 @@ export interface BlogPost {
   url: string;
 }
 
+/** Labels and icons of a blog card. */
+export interface BlogCardData {
+  readMore: string;
+  readMoreIcon: string;
+  categoryIcon: string;
+  dateIcon: string;
+}
+
+export interface BlogCardProps {
+  post: BlogPost;
+  card: BlogCardData;
+  compact?: boolean;
+}
+
 export interface BlogsData {
   label: string;
   title: string;
@@ -253,12 +354,25 @@ export interface BlogsData {
   count: number;
   buttonText: string;
   buttonUrl: string;
+  buttonIcon: string;
   posts: BlogPost[];
+  card: BlogCardData;
+}
+
+export interface BlogsProps {
+  data?: BlogsData;
 }
 
 export interface BlogGridData {
   postsPerPage: number;
   totalPosts: number;
+  pagination: PaginationData;
+}
+
+export interface BlogGridProps {
+  data?: BlogGridData;
+  /** The heading, posts and card labels are the ones of the home blog section. */
+  blogs?: BlogsData;
 }
 
 export interface ServicesGridItem {
@@ -269,14 +383,26 @@ export interface ServicesGridItem {
   url: string;
 }
 
+export interface ServiceCardProps {
+  service: ServicesGridItem;
+  readMore: string;
+  readMoreIcon: string;
+}
+
 export interface ServicesGridData {
   label: string;
   title: string;
   titleHighlight: string;
   items: ServicesGridItem[];
   readMore: string;
+  readMoreIcon: string;
   buttonText: string;
   buttonUrl: string;
+  pagination: PaginationData;
+}
+
+export interface ServicesGridProps {
+  data?: ServicesGridData;
 }
 
 export interface IncludedItem {
@@ -292,6 +418,7 @@ export interface ServiceDetailData {
   description: string;
   buttonText: string;
   buttonUrl: string;
+  buttonIcon: string;
   heroImage: string;
   overviewImage: string;
   imageAlt: string;
@@ -301,6 +428,10 @@ export interface ServiceDetailData {
   includedTitle: string;
   includedTitleHighlight: string;
   included: IncludedItem[];
+}
+
+export interface ServiceDetailProps {
+  data?: ServiceDetailData;
 }
 
 export interface InfoRow {
@@ -324,9 +455,15 @@ export interface ProjectDetailData {
   info: InfoRow[];
   sideImage: string;
   challengesLabel: string;
+  challengesIcon: string;
   challenges: string[];
   solutionsLabel: string;
+  solutionsIcon: string;
   solutions: string[];
+}
+
+export interface ProjectDetailProps {
+  data?: ProjectDetailData;
 }
 
 export interface RecentPost {
@@ -337,16 +474,28 @@ export interface RecentPost {
   url: string;
 }
 
+export interface BlogDetailImage {
+  id: string;
+  image: string;
+  imageAlt: string;
+}
+
 export interface BlogDetailData {
   post: { category: string; date: string; title: string; image: string };
+  categoryIcon: string;
+  dateIcon: string;
   intro: string;
   quote: string;
   body: string;
-  images: { src: string; alt: string }[];
+  images: BlogDetailImage[];
   sections: { heading: string; text: string }[];
   recentTitle: string;
   recentPosts: RecentPost[];
-  cta: ButtonData & { title: string; text: string; image: string };
+  cta: ButtonData & { title: string; text: string; image: string; buttonIcon: string };
+}
+
+export interface BlogDetailProps {
+  data?: BlogDetailData;
 }
 
 export interface FieldText {
@@ -355,6 +504,8 @@ export interface FieldText {
 }
 
 export interface ContactDetailItem {
+  /** "phone" and "email" rows are links. */
+  id: string;
   icon: string;
   title: string;
   text: string;
@@ -376,7 +527,9 @@ export interface ContactData {
     subject: FieldText;
     message: FieldText;
     buttonText: string;
+    buttonIcon: string;
     success: string;
+    successIcon: string;
   };
   details: {
     label: string;
@@ -387,6 +540,10 @@ export interface ContactData {
     socials: SocialLink[];
   };
   map: { title: string; embedUrl: string };
+}
+
+export interface ContactProps {
+  data?: ContactData;
 }
 
 export interface QuoteData {
@@ -409,9 +566,16 @@ export interface QuoteData {
     budget: FieldText;
     message: FieldText;
     buttonText: string;
+    buttonIcon: string;
     success: string;
+    successIcon: string;
+    selectIcon: string;
     serviceOptions: string[];
   };
+}
+
+export interface QuoteProps {
+  data?: QuoteData;
 }
 
 export interface NotFoundData {
@@ -419,6 +583,11 @@ export interface NotFoundData {
   text: string;
   buttonText: string;
   buttonUrl: string;
+  buttonIcon: string;
+}
+
+export interface NotFoundProps {
+  data?: NotFoundData;
 }
 
 export interface CyberSecuritySections {

@@ -1,18 +1,18 @@
-import { Fragment } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Icon } from "@/components/ui/Icon";
-import { introHidden } from "@/components/ui/motion";
-import type { BreadcrumbData, GlobalUIData } from "@/types/templates.types";
+import { Fragment } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Icon } from '@/components/ui/Icon';
+import { introHidden } from '@/components/ui/motion';
+import type { BreadcrumbProps } from '@/types/templates.types';
 
 /**
  * Blue photo banner at the top of every inner page: page title + "Home > Page" breadcrumb.
- * `paths` in templates.json is the trail; the last one is the current page (empty url).
+ * `paths` in templates.json is the trail; the last one is the current page (no url).
  */
-export const Breadcrumb = ({ data, ui }: { data?: BreadcrumbData; ui?: GlobalUIData }) => {
-  if (!data) return null;
+export const Breadcrumb = ({ data, ui }: BreadcrumbProps) => {
+  if (!data || !ui) return null;
   const { title, paths } = data;
-  const image = ui?.breadcrumbImage;
+  const image = ui.breadcrumbImage;
 
   return (
     <section className="relative mb-[32px] flex h-[15rem] items-center justify-center overflow-hidden sm:h-[19rem] lg:h-[22rem] xl:h-[26.6rem]">
@@ -27,7 +27,7 @@ export const Breadcrumb = ({ data, ui }: { data?: BreadcrumbData; ui?: GlobalUID
           {title}
         </h1>
         <nav
-          aria-label={ui?.breadcrumbLabel}
+          aria-label={ui.breadcrumbLabel}
           data-intro="up"
           data-intro-delay="150"
           suppressHydrationWarning
@@ -40,7 +40,7 @@ export const Breadcrumb = ({ data, ui }: { data?: BreadcrumbData; ui?: GlobalUID
                 <Fragment key={crumb.id}>
                   {index > 0 && (
                     <li aria-hidden="true">
-                      <Icon name="LuChevronRight" className="size-[0.85rem]" strokeWidth={2.4} />
+                      <Icon name={ui.breadcrumbSeparatorIcon} className="size-[0.85rem]" strokeWidth={2.4} />
                     </li>
                   )}
                   {crumb.url && !isLast ? (
